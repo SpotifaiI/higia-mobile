@@ -3,6 +3,8 @@ import {View} from "react-native";
 import {StatusBar} from 'expo-status-bar';
 import {
   useFonts,
+  Poppins_100Thin,
+  Poppins_200ExtraLight,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold
@@ -14,6 +16,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   let [isFontsLoaded] = useFonts({
+    Poppins_100Thin,
+    Poppins_200ExtraLight,
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold
