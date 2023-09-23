@@ -3,6 +3,7 @@
     "name": "higia-mobile",
     "slug": "higia-mobile",
     "version": "1.0.0",
+    "scheme": "higia-mobile",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -24,6 +25,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
