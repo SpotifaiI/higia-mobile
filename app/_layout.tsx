@@ -1,6 +1,5 @@
 import {useCallback} from 'react';
-import {Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {View} from "react-native";
 import {StatusBar} from 'expo-status-bar';
 import {
   useFonts,
@@ -9,6 +8,7 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
+import {Slot} from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,13 +30,10 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView onLayout={onLayoutRootBuilt}>
+    <View onLayout={onLayoutRootBuilt}>
       <StatusBar style='dark'/>
-      <View>
-        <Text style={{
-          fontFamily: 'Poppins_700Bold'
-        }}>Testing the Expo App!</Text>
-      </View>
-    </SafeAreaView>
+
+      <Slot />
+    </View>
   );
 }
