@@ -1,7 +1,7 @@
-import { Login } from "../screens/Login/Login";
+import Login from "./login";
 
 export default function Home() {
   return (
-      <Login />
+    <Login />
   );
 }
