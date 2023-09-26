@@ -13,6 +13,7 @@ import styled from "styled-components/native";
 import {RFValue} from "react-native-responsive-fontsize";
 import {RectButton} from "react-native-gesture-handler";
 import ActionButton from "../components/atoms/ActionButton";
+import InputLabel from "../components/atoms/InputLabel";
 
 export const Container = styled.View`
     padding: ${RFValue(10)}px;
@@ -86,7 +87,7 @@ export default function Login() {
 
           <ContentBody>
             <ViewButton>
-              <Text  style={{color:'#787D82', fontSize: 16, fontFamily: 'Poppins_700Bold', marginLeft: 3}}>E-mail</Text>
+              <InputLabel>E-mail</InputLabel>
               <TextInput
                 placeholder="Digite seu email"
                 keyboardType="email-address"
@@ -94,7 +95,7 @@ export default function Login() {
                 style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#FBFBFB', fontFamily: 'Poppins_400Regular', paddingLeft: 22 }}
               />
 
-              <Text style={{color:'#787D82', fontSize: 16, fontFamily: 'Poppins_700Bold', marginTop: 7, marginLeft: 3}}>Senha</Text>
+              <InputLabel>Senha</InputLabel>
               <TextInput
                 placeholder="Digite sua senha"
                 secureTextEntry={true}
