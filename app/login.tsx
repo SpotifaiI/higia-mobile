@@ -1,17 +1,20 @@
 import {
   Image,
-  Pressable,
   ScrollView,
   Text,
-  TextInput,
   View
 } from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
-import {BtnGoogle} from "../components/SocialButtons/BtnGoogle";
-import {BtnFacebook} from "../components/SocialButtons/BtnFacebook";
 import styled from "styled-components/native";
 import {RFValue} from "react-native-responsive-fontsize";
 import {RectButton} from "react-native-gesture-handler";
+
+import {BtnGoogle} from "../components/SocialButtons/BtnGoogle";
+import {BtnFacebook} from "../components/SocialButtons/BtnFacebook";
+import ActionButton from "../components/atoms/ActionButton";
+import InputLabel from "../components/atoms/InputLabel";
+import InputText from "../components/atoms/TextInput";
+import TextField from "../components/molecules/TextField";
 
 export const Container = styled.View`
     padding: ${RFValue(10)}px;
@@ -23,6 +26,11 @@ export const ContentHeader =styled.View `
     align-items: center;
     justify-content: center;
 
+`;
+
+export const FormContainer = styled.View`
+  gap: ${RFValue(8)}px;
+  margin: ${RFValue(8)}px auto ${RFValue(16)}px auto;
 `;
 
 export const ViewButton = styled.View`
@@ -83,28 +91,30 @@ export default function Login() {
           </ContentHeader>
 
 
-          <ContentBody>
-            <ViewButton>
-              <Text  style={{color:'#787D82', fontSize: 16, fontFamily: 'Poppins_700Bold', marginLeft: 3}}>E-mail</Text>
-              <TextInput
-                placeholder="Digite seu email"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#FBFBFB', fontFamily: 'Poppins_400Regular', paddingLeft: 22 }}
-              />
+          <FormContainer>
+            <TextField
+              inputLabel={{
+                label: 'E-mail'
+              }}
+              inputText={{
+                placeholder: 'Digite seu email',
+                keyboardType: 'email-address',
+                autoCapitalize: 'none'
+              }}
+            />
 
-              <Text style={{color:'#787D82', fontSize: 16, fontFamily: 'Poppins_700Bold', marginTop: 7, marginLeft: 3}}>Senha</Text>
-              <TextInput
-                placeholder="Digite sua senha"
-                secureTextEntry={true}
-                style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#FBFBFB', fontFamily: 'Poppins_400Regular', paddingLeft: 22 }}
-              />
+            <TextField
+              inputLabel={{
+                label: 'Senha'
+              }}
+              inputText={{
+                placeholder: 'Digite sua senha',
+                secureTextEntry: true
+              }}
+            />
 
-              <Pressable style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#59e382', alignItems: 'center', justifyContent: 'center', marginTop: 28}}>
-                <Text style={{fontSize: 20, color: '#F5F5F5', fontFamily:'Poppins_700Bold'}}>Entrar</Text>
-              </Pressable>
-            </ViewButton>
-          </ContentBody>
+            <ActionButton label="Entrar" />
+          </FormContainer>
 
 
           <ContentFooter>
