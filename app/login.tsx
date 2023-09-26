@@ -12,6 +12,7 @@ import {BtnFacebook} from "../components/SocialButtons/BtnFacebook";
 import styled from "styled-components/native";
 import {RFValue} from "react-native-responsive-fontsize";
 import {RectButton} from "react-native-gesture-handler";
+import ActionButton from "../components/atoms/ActionButton";
 
 export const Container = styled.View`
     padding: ${RFValue(10)}px;
@@ -100,9 +101,7 @@ export default function Login() {
                 style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#FBFBFB', fontFamily: 'Poppins_400Regular', paddingLeft: 22 }}
               />
 
-              <Pressable style={{borderRadius:16, width: 325, height: 78, backgroundColor:'#59e382', alignItems: 'center', justifyContent: 'center', marginTop: 28}}>
-                <Text style={{fontSize: 20, color: '#F5F5F5', fontFamily:'Poppins_700Bold'}}>Entrar</Text>
-              </Pressable>
+              <ActionButton label="Entrar" />
             </ViewButton>
           </ContentBody>
 
