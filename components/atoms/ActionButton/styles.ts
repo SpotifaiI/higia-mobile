@@ -9,7 +9,6 @@ export const Button = styled.TouchableOpacity`
   width: ${RFValue(320)}px;
   border-radius: ${RFValue(16)}px;
   overflow: hidden;
-
 `;
 
 export const ButtonText = styled.Text`
