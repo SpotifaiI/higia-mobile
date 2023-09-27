@@ -1,8 +1,8 @@
+import { LinearGradient } from "expo-linear-gradient";
+import { RFValue } from "react-native-responsive-fontsize";
 import styled from 'styled-components/native';
-import {RFValue} from "react-native-responsive-fontsize";
-import {LinearGradient} from "expo-linear-gradient";
 
-import { colors } from '../../../utils/styles/theme';
+import { colors } from '../../utils/styles/theme';
 
 export const Button = styled.TouchableOpacity`
   height: ${RFValue(72)}px;

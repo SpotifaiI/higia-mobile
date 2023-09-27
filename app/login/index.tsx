@@ -4,17 +4,16 @@ import {
   Text,
   View
 } from "react-native";
-import {SafeAreaView} from "react-native-safe-area-context";
+import { RectButton } from "react-native-gesture-handler";
+import { RFValue } from "react-native-responsive-fontsize";
+import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import {RFValue} from "react-native-responsive-fontsize";
-import {RectButton} from "react-native-gesture-handler";
 
-import {BtnGoogle} from "../components/SocialButtons/BtnGoogle";
-import {BtnFacebook} from "../components/SocialButtons/BtnFacebook";
-import ActionButton from "../components/atoms/ActionButton";
-import InputLabel from "../components/atoms/InputLabel";
-import InputText from "../components/atoms/TextInput";
-import TextField from "../components/molecules/TextField";
+import ActionButton from "../../components/ActionButton";
+import InputLabel from "../../components/InputLabel";
+import InputText from "../../components/InputText";
+import { BtnFacebook } from "../../components/SocialButtons/BtnFacebook";
+import { BtnGoogle } from "../../components/SocialButtons/BtnGoogle";
 
 export const Container = styled.View`
     padding: ${RFValue(10)}px;
@@ -76,6 +75,8 @@ export const HrLine = styled(RectButton)`
 `;
 
 export default function Login() {
+  function onHandlerLoginButton() {}
+
   return (
     <SafeAreaView style={{ backgroundColor: '#F5F5F5' }}>
       <ScrollView>
@@ -85,35 +86,27 @@ export default function Login() {
               resizeMode: 'cover',
               height: 119.828,
               width: 160,
-            }} source={require('../assets/favicon.png')} />
+            }} source={require('../../assets/favicon.png')} />
             <Description>HIGIA</Description>
             <Title>Faça login para começar!</Title>
           </ContentHeader>
 
 
           <FormContainer>
-            <TextField
-              inputLabel={{
-                label: 'E-mail'
-              }}
-              inputText={{
-                placeholder: 'Digite seu email',
-                keyboardType: 'email-address',
-                autoCapitalize: 'none'
-              }}
+            <InputLabel>E-mail</InputLabel>
+            <InputText
+              placeholder="Digite seu email"
+              keyboardType="email-address"
+              autoCapitalize="none"
             />
 
-            <TextField
-              inputLabel={{
-                label: 'Senha'
-              }}
-              inputText={{
-                placeholder: 'Digite sua senha',
-                secureTextEntry: true
-              }}
+            <InputLabel>Senha</InputLabel>
+            <InputText
+              placeholder="Digite sua senha"
+              secureTextEntry={true}
             />
 
-            <ActionButton label="Entrar" />
+            <ActionButton label="Entrar" onHandler={onHandlerLoginButton} />
           </FormContainer>
 
 

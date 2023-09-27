@@ -34,4 +34,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# IDEs config folders
 .idea
+.vscode

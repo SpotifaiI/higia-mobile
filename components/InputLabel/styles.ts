@@ -1,7 +1,7 @@
+import { RFValue } from "react-native-responsive-fontsize";
 import styled from 'styled-components/native';
-import {RFValue} from "react-native-responsive-fontsize";
 
-import {colors} from "../../../utils/styles/theme";
+import { colors } from "../../utils/styles/theme";
 
 export const LabelText = styled.Text`
   color: ${colors.dark};

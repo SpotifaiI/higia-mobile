@@ -44,6 +44,8 @@
     },
     "plugins": [
       "expo-router"
-    ]
-  }
+    ],
+    "sdkVersion": "49.0.0"
+  },
+  "name": "higia-mobile"
 }

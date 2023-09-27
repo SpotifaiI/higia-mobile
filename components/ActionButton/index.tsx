@@ -1,17 +1,17 @@
-import { TouchableOpacityProps } from 'react-native';
 
-import {Button, ButtonText, Gradient} from './styles';
-import {gradients} from "../../../utils/styles/theme";
+import { gradients } from "../../utils/styles/theme";
+import { Button, ButtonText, Gradient } from './styles';
 
 export type ActionButtonProps = {
   label: string;
-} & TouchableOpacityProps;
+  onHandler: () => void
+};
 
 export default function ActionButton({
-  label, ...rest
+  label, onHandler
 }: ActionButtonProps) {
   return (
-    <Button {...rest}>
+    <Button onPress={onHandler}>
       <Gradient
         start={{
           x: 0,
