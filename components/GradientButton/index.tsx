@@ -1,5 +1,5 @@
 
-import { gradients } from "../../utils/styles/theme";
+import { gradients } from "../../global/styles/theme";
 import { Button, ButtonText, Gradient } from './styles';
 
 export type ActionButtonProps = {
@@ -7,7 +7,7 @@ export type ActionButtonProps = {
   onHandler: () => void
 };
 
-export default function ActionButton({
+export function GradientButton({
   label, onHandler
 }: ActionButtonProps) {
   return (
