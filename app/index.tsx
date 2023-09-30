@@ -1,7 +1,7 @@
-import Login from "./login";
+import Welcome from "./welcome";
 
 export default function Home() {
   return (
-    <Login />
+    <Welcome />
   );
 }
