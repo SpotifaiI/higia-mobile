@@ -1,4 +1,4 @@
 export const buttonIcons = {
-  google: require('../../assets/google.png'),
-  facebook: require('../../assets/facebook.png')
+  google: require('../../assets/images/google.png'),
+  facebook: require('../../assets/images/facebook.png')
 };
