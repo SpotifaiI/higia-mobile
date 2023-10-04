@@ -1,16 +1,18 @@
-import { router } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { Image, Text, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { Background, Wrapper } from "../../global/styles/components";
 import { welcomeContent } from './content';
 import {
-  ButtonsContainer,
+  Title,
+  Hero,
+  Phrase,
   Description,
-  Header,
-  Wrapper
-} from "./styles";
-
+  Container,
+  ContentContainer
+} from './styles';
+import { GradientButton } from "../../components/GradientButton";
 
 export default function Welcome() {
   const contentList = useMemo(() => welcomeContent, []);
@@ -21,36 +23,33 @@ export default function Welcome() {
   useEffect(() => setContent(contentList[page]), [page]);
 
   function onPressedNext() {
-    if (page == welcomeContent.length - 1) {
-      return router.replace('/login');
-    }
-
-    setPage(page + 1);
+    // if (page == welcomeContent.length - 1) {
+    //   return router.replace('/login');
+    // }
+    //
+    // setPage(page + 1);
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#F5F5F5' }}>
-      <Wrapper>
-        <Header>
-          <Image
-            key={`${content.key}-hero-image`}
-            source={content.image}
-          />
-          <Description>HIGIA</Description>
-          <Text>{content.title}</Text>
-        </Header>
+    <Background>
+      <SafeAreaView>
+        <Wrapper>
+          <Container>
+            <Title>{content.title}</Title>
 
-        <Image
-          key={`${content.key}-step-image`}
-          source={content.step_image}
-        />
+            <ContentContainer>
+              <Hero source={content.image} />
+              <Phrase>{content.step_title}</Phrase>
+              <Description>{content.subtitle}</Description>
+            </ContentContainer>
 
-        <ButtonsContainer>
-          <TouchableOpacity onPress={onPressedNext}>
-            <Text>Ir para página {page + 2}</Text>
-          </TouchableOpacity>
-        </ButtonsContainer>
-      </Wrapper>
-    </SafeAreaView>
+            <GradientButton
+              label={content.button_label}
+              onHandler={onPressedNext}
+            />
+          </Container>
+        </Wrapper>
+      </SafeAreaView>
+    </Background>
   );
 }
