@@ -1,6 +1,6 @@
-
+import { Button, ButtonText } from './styles';
 import { gradients } from "../../global/styles/theme";
-import { Button, ButtonText, Gradient } from './styles';
+import { Gradient } from "../Gradient";
 
 export type ActionButtonProps = {
   label: string;
@@ -12,17 +12,7 @@ export function GradientButton({
 }: ActionButtonProps) {
   return (
     <Button onPress={onHandler}>
-      <Gradient
-        start={{
-          x: 0,
-          y: 0
-        }}
-        end={{
-          x: 1,
-          y: 1
-        }}
-        colors={gradients.main}
-      >
+      <Gradient>
         <ButtonText>{label}</ButtonText>
       </Gradient>
     </Button>

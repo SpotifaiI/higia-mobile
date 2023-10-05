@@ -4,7 +4,9 @@ import styled from "styled-components/native";
 import { colors } from "../../global/styles/theme";
 
 export const Container = styled.View`
-  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: ${RFValue(16)}px 0;
   justify-content: space-between;
 `;
 
@@ -13,6 +15,7 @@ export const Title = styled.Text`
   line-height: ${RFValue(48)}px;
   font-family: 'Poppins_400Regular';
   color: ${colors.main2};
+  text-align: center;
 `;
 
 export const Hero = styled.Image`
