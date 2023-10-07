@@ -21,7 +21,8 @@ export const Title = styled.Text`
 
 export const Hero = styled.Image`
   object-fit: contain;
-  width: 90%;
+  height: ${RFValue(160)}px;
+  margin: ${RFValue(32)}px 0;
 `;
 
 export const ContentContainer = styled.View`
@@ -50,10 +51,14 @@ export const Description = styled.Text`
 
 export const MaskedTitle = styled(MaskedView)`
   width: 100%;
-  height: ${RFValue(56)}px;
+  height: ${RFValue(48)}px;
 `;
 
 export const TextWrapper = styled.View`
-  width: 80%;
+  width: 90%;
   gap: ${RFValue(16)}px;
+`;
+
+export const Footer = styled.View`
+  gap: ${RFValue(24)}px;
 `;

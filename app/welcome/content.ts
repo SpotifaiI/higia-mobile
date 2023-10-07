@@ -12,10 +12,10 @@ export const welcomeContent = [
   },
   {
     key: 1,
-    title: 'Explore todos os recursos!',
+    title: 'Explore recursos!',
     image: welcome[1].hero,
     step_title: 'Facilitando seu Dia a Dia de Trabalho.',
-    subtitle: 'Gerencie suas tarefas do dia a dia, visualize no mapa todos os afazeres e acompanhe estatísticas sobre sua rotina de trabalho.<br><br>Tudo isso em um só lugar!',
+    subtitle: 'Gerencie suas tarefas do dia a dia, visualize no mapa todos os afazeres e acompanhe estatísticas sobre sua rotina de trabalho. Tudo isso em um só lugar!',
     button_label: 'Avançar para começar',
     step_image: welcome[1].step
   },
