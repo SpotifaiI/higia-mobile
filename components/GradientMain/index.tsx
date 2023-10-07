@@ -5,7 +5,7 @@ import { gradients } from "../../global/styles/theme";
 
 export type GradientProps = PropsWithChildren;
 
-export function Gradient({ children }: GradientProps) {
+export function GradientMain({ children }: GradientProps) {
   return (
     <GradientBox
       start={{

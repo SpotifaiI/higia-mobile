@@ -13,9 +13,12 @@ import {
   Phrase,
   Description,
   Container,
-  ContentContainer
+  ContentContainer,
+  MaskedTitle, TextWrapper
 } from './styles';
 import { GradientButton } from "../../components/GradientButton";
+import { GradientMain } from "../../components/GradientMain";
+import {View} from "react-native";
 
 export default function Welcome() {
   const safeArea = useSafeAreaInsets();
@@ -39,12 +42,18 @@ export default function Welcome() {
       <SafeAreaView>
         <Wrapper>
           <Container>
-            <Title>{content.title}</Title>
+            <MaskedTitle
+              maskElement={<Title>{content.title}</Title>}
+            >
+              <GradientMain />
+            </MaskedTitle>
 
             <ContentContainer>
               <Hero source={content.image} />
-              <Phrase>{content.step_title}</Phrase>
-              <Description>{content.subtitle}</Description>
+              <TextWrapper>
+                <Phrase>{content.step_title}</Phrase>
+                <Description>{content.subtitle}</Description>
+              </TextWrapper>
             </ContentContainer>
 
             <GradientButton
