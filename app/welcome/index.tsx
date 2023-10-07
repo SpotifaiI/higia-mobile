@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { router } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets
+} from "react-native-safe-area-context";
 
 import { Background, Wrapper } from "../../global/styles/components";
 import { welcomeContent } from './content';
@@ -15,6 +18,7 @@ import {
 import { GradientButton } from "../../components/GradientButton";
 
 export default function Welcome() {
+  const safeArea = useSafeAreaInsets();
   const contentList = useMemo(() => welcomeContent, []);
 
   const [page, setPage] = useState(0);

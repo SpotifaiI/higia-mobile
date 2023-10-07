@@ -5,10 +5,12 @@ import { colors } from "./theme";
 
 export const Background = styled.View`
   background-color: ${colors.lighter};
-  flex: 1;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Wrapper = styled.View`
-  padding: 0 ${RFValue(24)}px;
-  flex: 1;
+  padding: 0 ${RFValue(16)}px;
+  width: 100%;
+  height: 100%;
 `;

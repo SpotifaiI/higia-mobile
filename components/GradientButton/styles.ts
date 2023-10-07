@@ -15,9 +15,3 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled(Label)`
   color: ${colors.lighter};
 `;
-
-export const Gradient = styled(LinearGradient)`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
