@@ -1,16 +1,16 @@
-import {useCallback} from 'react';
-import {View} from "react-native";
-import {StatusBar} from 'expo-status-bar';
 import {
-  useFonts,
   Poppins_100Thin,
   Poppins_200ExtraLight,
   Poppins_400Regular,
   Poppins_500Medium,
-  Poppins_700Bold
+  Poppins_700Bold,
+  useFonts
 } from '@expo-google-fonts/poppins';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import {Slot} from "expo-router";
+import { StatusBar } from 'expo-status-bar';
+import { useCallback } from 'react';
+import { View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,10 +34,15 @@ export default function App() {
   }
 
   return (
-    <View onLayout={onLayoutRootBuilt}>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootBuilt}>
       <StatusBar style='dark'/>
 
-      <Slot />
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="welcome" options={{ headerShown: false }} />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="home" />
+      </Stack>
     </View>
   );
 }
