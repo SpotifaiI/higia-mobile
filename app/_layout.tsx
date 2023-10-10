@@ -37,11 +37,10 @@ export default function App() {
     <View style={{ flex: 1 }} onLayout={onLayoutRootBuilt}>
       <StatusBar style='dark'/>
 
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack initialRouteName="(tabs)">
         <Stack.Screen name="welcome" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="home" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </View>
   );

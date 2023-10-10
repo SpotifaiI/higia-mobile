@@ -4,6 +4,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { router } from "expo-router";
 import { GradientButton } from "../../components/GradientButton";
 import { IconButton } from "../../components/IconButton";
 import { InputLabel } from "../../components/InputLabel";
@@ -20,8 +21,10 @@ import {
   Wrapper
 } from "./styles";
 
-export default function Login() {
-  function onHandlerLoginButton() {}
+export function Login() {
+  function onHandlerLoginButton() {
+    router.replace('/(tabs)/tasks');
+  }
 
   function onHandlerGoogleButton() {}
 
