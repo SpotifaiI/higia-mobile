@@ -1,27 +1,27 @@
-import { useEffect, useMemo, useState } from "react";
 import { router } from "expo-router";
+import { useEffect, useMemo, useState } from "react";
 import {
   SafeAreaView
 } from "react-native-safe-area-context";
 
-import { Background, Wrapper } from "../../global/styles/components";
-import { welcomeContent } from './content';
-import {
-  Title,
-  Hero,
-  Phrase,
-  Description,
-  Container,
-  ContentContainer,
-  MaskedTitle,
-  TextWrapper,
-  Footer
-} from './styles';
 import { GradientButton } from "../../components/GradientButton";
 import { GradientMain } from "../../components/GradientMain";
 import { StepProgress } from "../../components/StepProgress";
+import { Background, Wrapper } from "../../global/styles/components";
+import { welcomeContent } from './content';
+import {
+  Container,
+  ContentContainer,
+  Description,
+  Footer,
+  Hero,
+  MaskedTitle,
+  Phrase,
+  TextWrapper,
+  Title
+} from './styles';
 
-export default function Welcome() {
+export function Welcome() {
   const contentList = useMemo(() => welcomeContent, []);
   const titleList = useMemo(
     () => contentList.map(
