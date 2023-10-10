@@ -23,7 +23,7 @@ import {
 
 export function Login() {
   function onHandlerLoginButton() {
-    router.replace('/(tabs)/tasks');
+    router.replace('/(tabs)/');
   }
 
   function onHandlerGoogleButton() {}

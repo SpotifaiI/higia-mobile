@@ -14,5 +14,6 @@ export const colors = {
 
 export const gradients = {
   main: [colors.main1, colors.main2],
-  mainLight: [colors.main1Light, colors.main2Light]
+  mainLight: [colors.main1Light, colors.main2Light],
+  disabled: [colors.dark, colors.light]
 };

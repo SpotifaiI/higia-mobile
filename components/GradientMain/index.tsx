@@ -1,11 +1,13 @@
 import { PropsWithChildren } from 'react';
 
-import { GradientBox } from './styles';
 import { gradients } from "../../global/styles/theme";
+import { GradientBox } from './styles';
 
-export type GradientProps = PropsWithChildren;
+export type GradientProps = {
+  focused?: boolean;
+} & PropsWithChildren;
 
-export function GradientMain({ children }: GradientProps) {
+export function GradientMain({ children, focused = true }: GradientProps) {
   return (
     <GradientBox
       start={{
@@ -16,7 +18,11 @@ export function GradientMain({ children }: GradientProps) {
         x: 1,
         y: 1
       }}
-      colors={gradients.main}
+      colors={
+        focused
+        ? gradients.main
+        : gradients.disabled
+      }
     >
       {children}
     </GradientBox>
