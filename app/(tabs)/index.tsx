@@ -2,30 +2,35 @@ import { Text, View } from "react-native";
 import { useEffect, useMemo, useState } from "react";
 import {
   Container,
-  ContentContainer,
+  ProgressContainer,
   Description,
   Footer,
   Phrase,
   TextWrapper,
   Title,
-  StyledProgressBar
+  StyledProgressBar,
+  BarProgress,
+  Subtitle,
+  DaysLasts
 } from './styles';
-
+import { GradientValue } from "../../components/GradientValue";
 
 export default function Home() {
   return (
     <Container>
       <Title>Bom dia, João!</Title>
-      <View>
-        <StyledProgressBar progress={0.5} width={200} height={20} />
-      </View>
+      <BarProgress>
+        <Subtitle>Meta Diária</Subtitle>
+        <StyledProgressBar progress={0.5} width={355} height={20}/>
+        <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
+      </BarProgress>
 
-      <ContentContainer>
-        <TextWrapper>
-          <Phrase>Hello, World!</Phrase>
-          <Description>Show de boletas</Description>
-        </TextWrapper>
-      </ContentContainer>
+      <ProgressContainer>
+          <Phrase>Progresso</Phrase>
+          <TextWrapper>
+            <GradientValue label="23"></GradientValue>
+          </TextWrapper>
+      </ProgressContainer>
 
       <Footer>
       </Footer>
