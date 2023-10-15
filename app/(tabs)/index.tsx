@@ -28,7 +28,7 @@ export default function Home() {
       <ProgressContainer>
           <Phrase>Progresso</Phrase>
           <TextWrapper>
-            <GradientValue label="23"></GradientValue>
+            
           </TextWrapper>
       </ProgressContainer>
 
