@@ -7,7 +7,7 @@ import { colors, gradients } from "../../global/styles/theme";
 export const Container = styled.View`
   width: 100%;
   height: 100%;
-  padding: ${RFValue(25)}px;
+  padding: ${RFValue(20)}px;
 `;
 
 export const Title = styled.Text`
@@ -47,15 +47,6 @@ export const Phrase = styled.Text`
   text-align: left;
 `;
 
-export const Description = styled.Text`
-  font-size: ${RFValue(16)}px;
-  line-height: ${RFValue(24)}px;
-  font-family: "Poppins_500Medium";
-  color: ${colors.dark};
-  width: 100%;
-  text-align: center;
-`;
-
 export const TextWrapper = styled.View`
   width: 90%;
   flex-direction: row;
@@ -87,17 +78,17 @@ export const DaysLasts = styled.Text`
   font-family: "Poppins_500Medium";
   color: ${colors.dark};
   text-align: left;
-  margin-left: ${RFValue(0)}px;
 `;
 
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
+  color: ${colors.darker};
 `;
 
 export const Label = styled.Text`
-  font-family: "Poppins_700Bold";
-  font-size: ${RFValue(15)}px;
+font-family: "Poppins_700Bold";
+font-size: ${RFValue(15)}px;
 `;
 
 export const Average = styled.View`
@@ -113,4 +104,53 @@ export const Actual = styled.View`
 export const Goal = styled.View`
   align-items: center;
   height: ${RFValue(70)}px;
+`;
+
+export const WeekBox = styled.View`
+  background-color: white;
+  padding: ${RFValue(10)}px;
+  border-radius: 20px;
+  height: ${RFValue(150)}px;
+  margin-top: ${RFValue(50)}px;
+`;
+
+export const DaysTable = styled.View`
+  display: flex;
+  flex-direction: row;
+  margin-top: ${RFValue(18)}px;
+  justify-content: space-around;
+`;
+export const PlaceBox = styled.View`
+  height: ${RFValue(50)}px;
+  width: ${RFValue(55)}px;
+  border-radius: ${RFValue(10)}px;
+  overflow: hidden;
+`;
+
+export const DayOne= styled.View`
+`;
+export const DayTwo = styled.View`
+`;
+export const DayThree= styled.View``;
+export const DayFour= styled.View``;
+export const DayFive= styled.View``;
+export const ValuePlace = styled.Text`
+  color: white;
+  font-size: ${RFValue(20)}px;
+  font-family: "Poppins_700Bold";
+  margin-bottom: ${RFValue(-10)}px;
+`;
+export const LabelPlace = styled.Text`
+  font-family: "Poppins_200ExtraLight";
+  text-transform: lowercase;
+  color: white;
+`;
+
+export const Description = styled.Text`
+  font-size: ${RFValue(16)}px;
+  font-family: "Poppins_500Medium";
+  color: ${colors.dark};
+  width: 100%;
+  text-align: center;
+  margin-top: ${RFValue(21)}px;
 `;

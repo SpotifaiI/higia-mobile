@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import { useEffect, useMemo, useState } from "react";
 import {
   Container,
@@ -17,23 +17,34 @@ import {
   Goal,
   Value,
   Label,
-  ContainBar
-} from './styles';
-import { GradientValue } from "../../components/GradientValue";
+  ContainBar,
+  DaysTable,
+  DayOne,
+  DayTwo,
+  DayThree,
+  DayFour,
+  DayFive,
+  PlaceBox,
+  ValuePlace,
+  LabelPlace,
+  WeekBox
+} from "./styles";
+import { GradientMain } from "../../components/GradientMain";
 
 export default function Home() {
   return (
-    <Container>
-      <Title>Bom dia, João!</Title>
-      <BarProgress>
-        <Subtitle>Meta Diária</Subtitle>
-        <ContainBar>
-          <StyledProgressBar progress={0.5} width={341} height={20}/>
-        </ContainBar>
-        <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
-      </BarProgress>
+    <ScrollView>
+      <Container>
+        <Title>Bom dia, João!</Title>
+        <BarProgress>
+          <Subtitle>Meta Diária</Subtitle>
+          <ContainBar>
+            <StyledProgressBar progress={0.5} width={341} height={20} />
+          </ContainBar>
+          <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
+        </BarProgress>
 
-      <ProgressContainer>
+        <ProgressContainer>
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
@@ -49,10 +60,48 @@ export default function Home() {
               <Label>Objetivo</Label>
             </Goal>
           </TextWrapper>
-      </ProgressContainer>
+        </ProgressContainer>
 
-      <Footer>
-      </Footer>
-    </Container>
+        <WeekBox>
+          <Description>Sua semana está corrida hein...</Description>
+          <DaysTable>
+            <DayOne>
+              <PlaceBox>
+                <GradientMain>
+                  <ValuePlace>10</ValuePlace>
+                  <LabelPlace>Lugares</LabelPlace>
+                </GradientMain>
+              </PlaceBox>
+            </DayOne>
+            <DayTwo>
+              <PlaceBox>
+                <GradientMain>
+                  <ValuePlace>15</ValuePlace>
+                  <LabelPlace>Lugares</LabelPlace>
+                </GradientMain>
+              </PlaceBox>
+            </DayTwo>
+            <DayThree>
+              <PlaceBox>
+                <GradientMain>
+                  <ValuePlace>16</ValuePlace>
+                  <LabelPlace>Lugares</LabelPlace>
+                </GradientMain>
+              </PlaceBox>
+            </DayThree>
+            <DayFour>
+              <PlaceBox>
+                <GradientMain>
+                  <ValuePlace>17</ValuePlace>
+                  <LabelPlace>Lugares</LabelPlace>
+                </GradientMain>
+              </PlaceBox>
+            </DayFour>
+          </DaysTable>
+        </WeekBox>
+
+        <Footer></Footer>
+      </Container>
+    </ScrollView>
   );
 }
