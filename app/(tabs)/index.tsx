@@ -11,7 +11,13 @@ import {
   StyledProgressBar,
   BarProgress,
   Subtitle,
-  DaysLasts
+  DaysLasts,
+  Average,
+  Actual,
+  Goal,
+  Value,
+  Label,
+  ContainBar
 } from './styles';
 import { GradientValue } from "../../components/GradientValue";
 
@@ -21,14 +27,27 @@ export default function Home() {
       <Title>Bom dia, João!</Title>
       <BarProgress>
         <Subtitle>Meta Diária</Subtitle>
-        <StyledProgressBar progress={0.5} width={355} height={20}/>
+        <ContainBar>
+          <StyledProgressBar progress={0.5} width={341} height={20}/>
+        </ContainBar>
         <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
       </BarProgress>
 
       <ProgressContainer>
           <Phrase>Progresso</Phrase>
           <TextWrapper>
-            
+            <Average>
+              <Value>25.0</Value>
+              <Label>Média</Label>
+            </Average>
+            <Actual>
+              <Value>45</Value>
+              <Label>Atual</Label>
+            </Actual>
+            <Goal>
+              <Value>50</Value>
+              <Label>Objetivo</Label>
+            </Goal>
           </TextWrapper>
       </ProgressContainer>
 
