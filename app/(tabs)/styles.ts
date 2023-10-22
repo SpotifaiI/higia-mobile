@@ -83,7 +83,7 @@ export const DaysLasts = styled.Text`
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
-  color: ${colors.darker};
+  color:;
 `;
 
 export const Label = styled.Text`
@@ -117,7 +117,7 @@ export const WeekBox = styled.View`
 export const DaysTable = styled.View`
   display: flex;
   flex-direction: row;
-  margin-top: ${RFValue(18)}px;
+  margin-top: ${RFValue(15)}px;
   justify-content: space-around;
 `;
 export const PlaceBox = styled.View`
@@ -127,13 +127,26 @@ export const PlaceBox = styled.View`
   overflow: hidden;
 `;
 
-export const DayOne= styled.View`
+export const DayOne = styled.View`
+  display: flex;
+  align-items: center;
 `;
 export const DayTwo = styled.View`
+  display: flex;  
+  align-items: center;
 `;
-export const DayThree= styled.View``;
-export const DayFour= styled.View``;
-export const DayFive= styled.View``;
+export const DayThree = styled.View`
+  display: flex;
+  align-items: center;
+`;
+export const DayFour = styled.View`
+  display: flex;
+  align-items: center;
+`;
+export const DayFive = styled.View`
+  display: flex;
+  align-items: center;
+`;
 export const ValuePlace = styled.Text`
   color: white;
   font-size: ${RFValue(20)}px;
@@ -153,4 +166,8 @@ export const Description = styled.Text`
   width: 100%;
   text-align: center;
   margin-top: ${RFValue(21)}px;
+`;
+
+export const CurrentDay = styled.Text`
+  font-family: "Poppins_200ExtraLight";
 `;

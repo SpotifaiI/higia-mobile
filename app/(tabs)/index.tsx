@@ -23,7 +23,7 @@ import {
   DayTwo,
   DayThree,
   DayFour,
-  DayFive,
+  CurrentDay,
   PlaceBox,
   ValuePlace,
   LabelPlace,
@@ -48,7 +48,7 @@ export default function Home() {
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
-              <Value>25.0</Value>
+                  <Value>25.0</Value>
               <Label>Média</Label>
             </Average>
             <Actual>
@@ -72,6 +72,7 @@ export default function Home() {
                   <LabelPlace>Lugares</LabelPlace>
                 </GradientMain>
               </PlaceBox>
+              <CurrentDay>2/Out</CurrentDay>
             </DayOne>
             <DayTwo>
               <PlaceBox>
@@ -80,6 +81,7 @@ export default function Home() {
                   <LabelPlace>Lugares</LabelPlace>
                 </GradientMain>
               </PlaceBox>
+              <CurrentDay>3/Out</CurrentDay>
             </DayTwo>
             <DayThree>
               <PlaceBox>
@@ -88,6 +90,7 @@ export default function Home() {
                   <LabelPlace>Lugares</LabelPlace>
                 </GradientMain>
               </PlaceBox>
+              <CurrentDay>4/Out</CurrentDay>
             </DayThree>
             <DayFour>
               <PlaceBox>
@@ -96,6 +99,7 @@ export default function Home() {
                   <LabelPlace>Lugares</LabelPlace>
                 </GradientMain>
               </PlaceBox>
+              <CurrentDay>5/Out</CurrentDay>
             </DayFour>
           </DaysTable>
         </WeekBox>
