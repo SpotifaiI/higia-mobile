@@ -4,7 +4,7 @@ import {
   Container,
   ProgressContainer,
   Description,
-  Footer,
+  TaksContainer,
   Phrase,
   TextWrapper,
   Title,
@@ -27,7 +27,7 @@ import {
   PlaceBox,
   ValuePlace,
   LabelPlace,
-  WeekBox
+  WeekBox,
 } from "./styles";
 import { GradientMain } from "../../components/GradientMain";
 
@@ -37,7 +37,7 @@ export default function Home() {
       <Container>
         <Title>Bom dia, João!</Title>
         <BarProgress>
-          <Subtitle>Meta Diária</Subtitle>
+          <Phrase>Meta Diária</Phrase>
           <ContainBar>
             <StyledProgressBar progress={0.5} width={341} height={20} />
           </ContainBar>
@@ -48,7 +48,7 @@ export default function Home() {
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
-                  <Value>25.0</Value>
+              <Value>25.0</Value>
               <Label>Média</Label>
             </Average>
             <Actual>
@@ -104,7 +104,9 @@ export default function Home() {
           </DaysTable>
         </WeekBox>
 
-        <Footer></Footer>
+        <TaksContainer>
+
+        </TaksContainer>
       </Container>
     </ScrollView>
   );

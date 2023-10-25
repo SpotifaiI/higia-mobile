@@ -53,8 +53,8 @@ export const TextWrapper = styled.View`
   justify-content: space-between;
 `;
 
-export const Footer = styled.View`
-  gap: ${RFValue(5)}px;
+export const TaksContainer = styled.View`
+  
 `;
 
 export const StyledProgressBar = styled(ProgressBar)`
@@ -83,12 +83,12 @@ export const DaysLasts = styled.Text`
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
-  color:;
+  color: ;
 `;
 
 export const Label = styled.Text`
-font-family: "Poppins_700Bold";
-font-size: ${RFValue(15)}px;
+  font-family: "Poppins_700Bold";
+  font-size: ${RFValue(15)}px;
 `;
 
 export const Average = styled.View`
@@ -117,7 +117,7 @@ export const WeekBox = styled.View`
 export const DaysTable = styled.View`
   display: flex;
   flex-direction: row;
-  margin-top: ${RFValue(15)}px;
+  margin-top: ${RFValue(10)}px;
   justify-content: space-around;
 `;
 export const PlaceBox = styled.View`
@@ -132,7 +132,7 @@ export const DayOne = styled.View`
   align-items: center;
 `;
 export const DayTwo = styled.View`
-  display: flex;  
+  display: flex;
   align-items: center;
 `;
 export const DayThree = styled.View`
@@ -170,4 +170,5 @@ export const Description = styled.Text`
 
 export const CurrentDay = styled.Text`
   font-family: "Poppins_200ExtraLight";
+  margin-top: ${RFValue(5)}px;
 `;
