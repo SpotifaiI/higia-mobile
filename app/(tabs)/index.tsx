@@ -34,10 +34,13 @@ export default function Home() {
     <ScrollView>
       <Container>
         <Title>Bom dia, João!</Title>
+
         <BarProgress>
           <Phrase>Meta Diária</Phrase>
           <ContainBar>
-            <StyledProgressBar />
+            <StyledProgressBar >
+              <GradientMain />
+            </StyledProgressBar>
           </ContainBar>
           <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
         </BarProgress>

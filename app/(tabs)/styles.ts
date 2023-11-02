@@ -1,6 +1,7 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import { colors, gradients } from "../../global/styles/theme";
+
+import { colors } from "../../global/styles/theme";
 
 export const Container = styled.View`
   width: 100%;
@@ -33,8 +34,10 @@ export const BarProgress = styled.View`
 `;
 
 export const ContainBar = styled.View`
-  align-items: center;
   height: ${RFValue(32)}px;
+  background-color: ${colors.light};
+  border-radius: ${RFValue(16)}px;
+  overflow: hidden;
 `;
 
 export const Phrase = styled.Text`
@@ -52,13 +55,11 @@ export const TextWrapper = styled.View`
   justify-content: space-between;
 `;
 
-export const TaksContainer = styled.View`
-
-`;
+export const TaksContainer = styled.View``;
 
 export const StyledProgressBar = styled.View`
-  color: ${gradients.main};
-  border-radius: 100px;
+  height: 100%;
+  width: 40%;
 `;
 
 export const Subtitle = styled.Text`
@@ -72,8 +73,8 @@ export const Subtitle = styled.Text`
 `;
 
 export const DaysLasts = styled.Text`
-  font-size: ${RFValue(11)}px;
-  margin-top: ${RFValue(6)}px;
+  font-size: ${RFValue(16)}px;
+  margin-top: ${RFValue(8)}px;
   font-family: "Poppins_500Medium";
   color: ${colors.dark};
   text-align: left;
