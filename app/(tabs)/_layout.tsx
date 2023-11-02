@@ -22,9 +22,7 @@ export default function Layout() {
           headerTitleAlign: 'center',
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: 80,
-            borderTopEndRadius: 16,
-            borderTopStartRadius: 16
+            height: 80
           },
           tabBarActiveTintColor: colors.main1,
           tabBarIcon: ({ focused }) => {
