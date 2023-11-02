@@ -1,16 +1,12 @@
 import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
-import MapView, { LatLng, Marker } from 'react-native-maps';
+import MapView, { LatLng } from 'react-native-maps';
 
-import { Feather } from '@expo/vector-icons';
-import { colors } from '../../../global/styles/theme';
+import { TaskMapMarker } from '../../../components/TaskMapMarker';
 import {
   MapContainer,
   MapErrorContainer,
-  MapErrorMessage,
-  TaskMapContainer,
-  TaskMapMarker,
-  TaskMapMarkerPointer
+  MapErrorMessage
 } from './styles';
 
 export function Tasks() {
@@ -44,17 +40,32 @@ export function Tasks() {
         latitudeDelta: 0,
         longitudeDelta: 0
       }} style={{ flex: 1 }} zoomEnabled>
-        <Marker
+        <TaskMapMarker
+          key={0}
           title="Avenida JK"
           description="Cruzamento da JK com a Rua 9 de Março"
-          coordinate={initialLocation}>
-          <TaskMapContainer>
-            <TaskMapMarker>
-              <Feather size={56} color={colors.white} name="clock" />
-            </TaskMapMarker>
-            <TaskMapMarkerPointer />
-          </TaskMapContainer>
-        </Marker>
+          coordinate={initialLocation}
+          status="pending" />
+
+        <TaskMapMarker
+          key={1}
+          title="Avenida JK"
+          description="Cruzamento da JK com a Rua 9 de Março"
+          coordinate={{
+            latitude: initialLocation.latitude + 0.0004343,
+            longitude: initialLocation.longitude + 0.0054543
+          }}
+          status="progress" />
+
+        <TaskMapMarker
+          key={2}
+          title="Avenida JK"
+          description="Cruzamento da JK com a Rua 9 de Março"
+          coordinate={{
+            latitude: initialLocation.latitude - 0.0004343,
+            longitude: initialLocation.longitude - 0.0054543
+          }}
+          status="finished" />
       </MapView>
 
       {(locationErrorMessage)

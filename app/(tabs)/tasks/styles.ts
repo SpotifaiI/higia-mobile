@@ -31,30 +31,3 @@ export const MapErrorMessage = styled.Text`
   font-family: "Poppins_400Regular";
   line-height: ${RFValue(32)}px;
 `;
-
-export const TaskMapContainer = styled.View`
-  align-items: center;
-`;
-
-export const TaskMapMarker = styled.View`
-  height: ${RFValue(64)}px;
-  width: ${RFValue(64)}px;
-  align-items: center;
-  justify-content: center;
-  background-color: ${colors.main1};
-  border-radius: ${RFValue(32)}px;
-  z-index: 101;
-`;
-
-export const TaskMapMarkerPointer = styled.View`
-  width: 0;
-  height: 0;
-  border-left-width: ${RFValue(24)}px;
-  border-right-width: ${RFValue(24)}px;
-  border-top-width: ${RFValue(48)}px;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-top-color: ${colors.main1};
-  transform: translateY(-10px);
-  z-index: 100;
-`;
