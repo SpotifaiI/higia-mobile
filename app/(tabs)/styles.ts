@@ -1,7 +1,5 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import ProgressBar from "react-native-progress/Bar";
-import { LinearGradient } from "expo-linear-gradient";
 import { colors, gradients } from "../../global/styles/theme";
 
 export const Container = styled.View`
@@ -36,6 +34,7 @@ export const BarProgress = styled.View`
 
 export const ContainBar = styled.View`
   align-items: center;
+  height: ${RFValue(32)}px;
 `;
 
 export const Phrase = styled.Text`
@@ -54,10 +53,10 @@ export const TextWrapper = styled.View`
 `;
 
 export const TaksContainer = styled.View`
-  
+
 `;
 
-export const StyledProgressBar = styled(ProgressBar)`
+export const StyledProgressBar = styled.View`
   color: ${gradients.main};
   border-radius: 100px;
 `;
@@ -83,7 +82,6 @@ export const DaysLasts = styled.Text`
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
-  color: ;
 `;
 
 export const Label = styled.Text`

@@ -1,35 +1,33 @@
-import { Text, View, ScrollView } from "react-native";
-import { useEffect, useMemo, useState } from "react";
+import { ScrollView } from "react-native";
+import { GradientMain } from "../../components/GradientMain";
 import {
+  Actual,
+  Average,
+  BarProgress,
+  ContainBar,
   Container,
-  ProgressContainer,
+  CurrentDay,
+  DayFour,
+  DayOne,
+  DayThree,
+  DayTwo,
+  DaysLasts,
+  DaysTable,
   Description,
-  TaksContainer,
+  Goal,
+  Label,
+  LabelPlace,
   Phrase,
+  PlaceBox,
+  ProgressContainer,
+  StyledProgressBar,
+  TaksContainer,
   TextWrapper,
   Title,
-  StyledProgressBar,
-  BarProgress,
-  Subtitle,
-  DaysLasts,
-  Average,
-  Actual,
-  Goal,
   Value,
-  Label,
-  ContainBar,
-  DaysTable,
-  DayOne,
-  DayTwo,
-  DayThree,
-  DayFour,
-  CurrentDay,
-  PlaceBox,
   ValuePlace,
-  LabelPlace,
-  WeekBox,
+  WeekBox
 } from "./styles";
-import { GradientMain } from "../../components/GradientMain";
 
 export default function Home() {
   return (
@@ -39,7 +37,7 @@ export default function Home() {
         <BarProgress>
           <Phrase>Meta Diária</Phrase>
           <ContainBar>
-            <StyledProgressBar progress={0.5} width={341} height={20} />
+            <StyledProgressBar />
           </ContainBar>
           <DaysLasts>Faltam 5 lugares para alcançar o seu objetivo!</DaysLasts>
         </BarProgress>
