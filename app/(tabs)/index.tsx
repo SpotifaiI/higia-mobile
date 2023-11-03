@@ -1,5 +1,6 @@
 import { ScrollView } from "react-native";
 import { GradientMain } from "../../components/GradientMain";
+import { StreetBox } from "../../components/ActiveTasks";
 import {
   Actual,
   Average,
@@ -26,7 +27,7 @@ import {
   Title,
   Value,
   ValuePlace,
-  WeekBox
+  WeekBox,
 } from "./styles";
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
         <BarProgress>
           <Phrase>Meta Diária</Phrase>
           <ContainBar>
-            <StyledProgressBar >
+            <StyledProgressBar>
               <GradientMain />
             </StyledProgressBar>
           </ContainBar>
@@ -49,7 +50,7 @@ export default function Home() {
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
-              <Value>25.0</Value>
+                <Value>25.0</Value>
               <Label>Média</Label>
             </Average>
             <Actual>
@@ -106,7 +107,12 @@ export default function Home() {
         </WeekBox>
 
         <TaksContainer>
-
+          <Phrase>Tarefas</Phrase>
+          <StreetBox
+            streetName={"Avenida JK"}
+            distance={"10"}
+            isPaused={false}
+          />
         </TaksContainer>
       </Container>
     </ScrollView>

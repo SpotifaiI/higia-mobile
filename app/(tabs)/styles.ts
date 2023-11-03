@@ -55,7 +55,14 @@ export const TextWrapper = styled.View`
   justify-content: space-between;
 `;
 
-export const TaksContainer = styled.View``;
+export const TaksContainer = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.darker};
+  margin-top: ${RFValue(25)}px;
+  margin-bottom: ${RFValue(25)}px;
+`;
 
 export const StyledProgressBar = styled.View`
   height: 100%;
@@ -83,6 +90,7 @@ export const DaysLasts = styled.Text`
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
+  
 `;
 
 export const Label = styled.Text`
