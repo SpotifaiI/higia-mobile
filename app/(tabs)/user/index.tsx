@@ -1,15 +1,13 @@
 import { Feather } from '@expo/vector-icons';
 
 import { GradientMain } from '../../../components/GradientMain';
+import { ProfileDetails } from '../../../components/ProfileDetails';
 import { Wrapper } from '../../../global/styles/components';
 import { colors } from '../../../global/styles/theme';
 import {
   ProfileAvatar,
   ProfileBody,
   ProfileContainer,
-  ProfileDetailsContainer,
-  ProfileDetailsData,
-  ProfileDetailsLabel,
   ProfileHeader,
   ProfileName
 } from './styles';
@@ -31,14 +29,18 @@ export function User() {
         </ProfileHeader>
 
         <ProfileBody>
-          <ProfileDetailsContainer>
-            <ProfileDetailsLabel>
-              E-mail
-            </ProfileDetailsLabel>
-            <ProfileDetailsData>
-              contato@joao.com.br
-            </ProfileDetailsData>
-          </ProfileDetailsContainer>
+          <ProfileDetails
+            label="E-mail"
+            text="contato@joao.com.br" />
+          <ProfileDetails
+            label="Telefone"
+            text="(47) 9 9999-9999" />
+          <ProfileDetails
+            label="Data de Nascimento"
+            text="23/10/1963" />
+          <ProfileDetails
+            label="CPF"
+            text="000.000.000-00" />
         </ProfileBody>
       </Wrapper>
     </ProfileContainer>
