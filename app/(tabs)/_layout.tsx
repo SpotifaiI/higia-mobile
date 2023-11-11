@@ -8,41 +8,39 @@ import { colors } from "../../global/styles/theme";
 export default function Layout() {
   return (
     <>
-      <StatusBar style='light'/>
+      <StatusBar style="light" />
       <Tabs
         initialRouteName="index"
-        screenOptions={({navigation, route}) => ({
-          headerBackground: () => (
-            <GradientMain />
-          ),
+        screenOptions={({ navigation, route }) => ({
+          headerBackground: () => <GradientMain />,
           headerTitleStyle: {
-            color: colors.lighter
+            color: colors.lighter,
           },
           headerTintColor: colors.main1,
-          headerTitleAlign: 'center',
+          headerTitleAlign: "center",
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: 80
+            height: 80,
           },
           tabBarActiveTintColor: colors.main1,
           tabBarIcon: ({ focused }) => {
             let iconName;
 
             switch (route.name) {
-              case 'index':
-                iconName = 'home';
+              case "index":
+                iconName = "home";
                 break;
 
-              case 'tasks':
-                iconName = 'map-pin';
+              case "tasks":
+                iconName = "map-pin";
                 break;
 
-              case 'user':
-                iconName = 'user';
+              case "user":
+                iconName = "user";
                 break;
 
-              case 'settings':
-                iconName = 'settings';
+              case "settings":
+                iconName = "settings";
                 break;
             }
 
@@ -53,35 +51,36 @@ export default function Layout() {
                 iconName={iconName as iconMap}
               />
             );
-          }
+          },
         })}
       >
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Início',
-            href: '/'
+            title: "Início",
+            href: "/",
           }}
         />
         <Tabs.Screen
           name="tasks"
           options={{
-            title: 'Mapa de Tarefas',
-            href: '/tasks'
+            title: "Mapa de Tarefas",
+            href: "/tasks",
           }}
         />
         <Tabs.Screen
           name="user"
           options={{
-            title: 'Perfil do Usuário',
-            href: '/user'
+            title: "Perfil do Usuário",
+            href: "/user",
           }}
         />
         <Tabs.Screen
           name="settings"
           options={{
-            title: 'Configurações',
-            href: '/settings'
+            title: "Configurações",
+            href: "/settings/",
+            headerShown: false
           }}
         />
       </Tabs>
