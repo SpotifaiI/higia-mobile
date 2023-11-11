@@ -14,6 +14,7 @@ import {
   HigiaIcon,
   Description,
   MenuButtonDescription,
+  AntDesignWrapper,
 } from "./styles";
 
 import { AntDesign } from "@expo/vector-icons";
@@ -31,7 +32,9 @@ export const SettingsMainScreen: React.FC = () => {
           >
             <MenuButtonText>
               <MenuButtonDescription>Aparência</MenuButtonDescription>
+              <AntDesignWrapper>
               <AntDesign name="arrowright" size={18} color="black" />
+              </AntDesignWrapper>
             </MenuButtonText>
           </TouchableOpacity>
           <TouchableOpacity
@@ -40,7 +43,9 @@ export const SettingsMainScreen: React.FC = () => {
           >
             <MenuButtonText>
               <MenuButtonDescription>Mapa</MenuButtonDescription>
-              <AntDesign name="arrowright" size={18} color="black" />
+              <AntDesignWrapper>
+                <AntDesign name="arrowright" size={18} color="black" />
+              </AntDesignWrapper>
             </MenuButtonText>
           </TouchableOpacity>
           <TouchableOpacity
@@ -49,7 +54,9 @@ export const SettingsMainScreen: React.FC = () => {
           >
             <MenuButtonText>
               <MenuButtonDescription>Estatística</MenuButtonDescription>
+              <AntDesignWrapper>
               <AntDesign name="arrowright" size={18} color="black" />
+              </AntDesignWrapper>
             </MenuButtonText>
           </TouchableOpacity>
         </MenuBar>

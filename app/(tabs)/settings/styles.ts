@@ -2,7 +2,6 @@ import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 import { colors } from "../../../global/styles/theme";
-import { AntDesign as AntDesignIcon } from "@expo/vector-icons";
 
 export const MenuBar = styled.View`
   width: ${RFValue(270)}px;
@@ -11,7 +10,7 @@ export const MenuBar = styled.View`
 `;
 
 export const MenuButtons = {
-  width: RFValue(275),
+  width: RFValue(270),
   height: RFValue(48),
   backgroundColor: colors.lighter,
   alignItems: "left",
@@ -19,7 +18,7 @@ export const MenuButtons = {
 };
 
 export const MenuButtonMap = {
-  width: RFValue(275),
+  width: RFValue(270),
   height: RFValue(48),
   backgroundColor: colors.lighter,
   borderTopWidth: 3,
@@ -33,19 +32,20 @@ export const MenuButtonMap = {
 export const MenuButtonText = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   padding: 0px 15px 0px 10px;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 export const MenuButtonDescription = styled.Text`
   font-family: "Poppins_700Bold";
   font-size: 15px;
+  displa: flex;
 `;
 
-export const AntDesign = styled(AntDesignIcon)`
-  margin-top: ${RFValue(10)}px;
-`;
+export const AntDesignWrapper = styled.View``;
+
 
 export const MenuPage = styled.View`
   display: flex;
