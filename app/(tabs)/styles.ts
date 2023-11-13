@@ -22,7 +22,7 @@ export const ProgressContainer = styled.View`
   align-items: center;
   justify-content: center;
   color: ${colors.darker};
-  margin-top: ${RFValue(25)}px;
+  margin-top: ${RFValue(50)}px;
 `;
 
 export const BarProgress = styled.View`
@@ -30,7 +30,7 @@ export const BarProgress = styled.View`
   align-items: left;
   justify-content: center;
   color: ${colors.darker};
-  margin-top: ${RFValue(25)}px;
+  margin-top: ${RFValue(40)}px;
 `;
 
 export const ContainBar = styled.View`
@@ -60,7 +60,7 @@ export const TaksContainer = styled.View`
   align-items: center;
   justify-content: center;
   color: ${colors.darker};
-  margin-top: ${RFValue(25)}px;
+  margin-top: ${RFValue(50)}px;
   margin-bottom: ${RFValue(25)}px;
 `;
 
@@ -118,7 +118,7 @@ export const WeekBox = styled.View`
   padding: ${RFValue(10)}px;
   border-radius: 20px;
   height: ${RFValue(150)}px;
-  margin-top: ${RFValue(50)}px;
+  margin-top: ${RFValue(70)}px;
 `;
 
 export const DaysTable = styled.View`
@@ -172,7 +172,7 @@ export const Description = styled.Text`
   color: ${colors.dark};
   width: 100%;
   text-align: center;
-  margin-top: ${RFValue(21)}px;
+  margin-top: ${RFValue(15)}px;
 `;
 
 export const CurrentDay = styled.Text`

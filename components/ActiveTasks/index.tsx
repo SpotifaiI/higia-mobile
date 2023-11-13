@@ -11,6 +11,10 @@ import {
   StreetName
 } from "./styles";
 
+import { FontAwesome } from "@expo/vector-icons"; 
+import { colors } from "../../global/styles/theme";
+import { GradientMain } from "../GradientMain";
+
 export type StreetBoxProps = PropsWithChildren<{
   streetName: string;
   distance: string;
@@ -33,7 +37,8 @@ export function StreetBox({
             <Time>{time}</Time>
           </>
         ) : (
-          <PlayIcon>Play</PlayIcon>
+          <FontAwesome  name="play-circle-o" size={50} color={
+            colors.main1} />
         )}
       </LeftContent>
       <RightContent>
