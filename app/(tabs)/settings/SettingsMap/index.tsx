@@ -5,13 +5,9 @@ import {
   TaksMap,
   Container,
   TasksText,
-  SizeIcons,
-  MapButtonDescription,
-  AntDesignWrapper,
-  MapButtonText,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
+import { AppearanceButton } from "../../../../components/AppearanceButton";
 
 export const SettingsMap: React.FC = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -20,17 +16,7 @@ export const SettingsMap: React.FC = () => {
 
   return (
     <Container>
-      <TouchableOpacity
-        style={SizeIcons}
-        onPress={()=>{}}
-      >
-        <MapButtonText>
-          <MapButtonDescription>Aparência</MapButtonDescription>
-          <AntDesignWrapper>
-            <AntDesign name="arrowright" size={18} color="black" />
-          </AntDesignWrapper>
-        </MapButtonText>
-      </TouchableOpacity>
+        <AppearanceButton onHandler={()=>{}}></AppearanceButton>
       <TaksMap>
         <TasksText>Mostrar tarefas concluídas</TasksText>
         <View style={{ flexDirection: "row", alignItems: "center" }}>

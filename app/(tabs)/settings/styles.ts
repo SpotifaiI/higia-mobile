@@ -9,25 +9,23 @@ export const MenuBar = styled.View`
   color: ${colors.darker};
 `;
 
-export const MenuButtons = {
-  width: RFValue(270),
-  height: RFValue(48),
-  backgroundColor: colors.lighter,
-  alignItems: "left",
-  justifyContent: "center",
-};
+export const MenuButton = styled.TouchableOpacity`
+width: ${RFValue(270)}px;
+  height: ${RFValue(48)}px;
+  background-color: ${colors.lighter};
+  align-items: left;
+  justify-content: center;
+`;
 
-export const MenuButtonMap = {
-  width: RFValue(270),
-  height: RFValue(48),
-  backgroundColor: colors.lighter,
-  borderTopWidth: 3,
-  borderTopColor: colors.light,
-  borderBottomWidth: 3,
-  borderBottomColor: colors.light,
-  justifyContent: "center",
-  alignItems: "left",
-};
+export const MenuButtonMap = styled.TouchableOpacity`
+  width: ${RFValue(270)}px;
+  height: ${RFValue(48)}px;
+  background-color: ${colors.lighter};
+  border-top: 3px solid ${colors.light};
+  border-bottom: 3px solid ${colors.light};
+  justify-content: center;
+  align-items: left;
+`;
 
 export const MenuButtonText = styled.View`
   display: flex;
@@ -52,7 +50,7 @@ export const MenuPage = styled.View`
   align-items: center;
   width: ${RFValue(270)}px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 15px;
   margin-top: ${RFValue(50)}px;
   background-color: ${colors.lighter};
   elevation: 20;

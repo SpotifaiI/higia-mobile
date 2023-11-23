@@ -26,30 +26,3 @@ export const TasksText = styled.Text`
   font-family: Poppins_400Regular;
   color: ${colors.black};
 `;
-
-export const SizeIcons = {
-  backgroundColor: colors.lighter,
-  padding: 16,
-  borderRadius: 16,
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  display: 'flex',
-};
-
-export const MapButtonText = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px 15px 0px 11px;
-  width: 100%;
-  justify-content: space-between;
-`;
-
-export const MapButtonDescription = styled.Text`
-  font-family: "Poppins_700Bold";
-  font-size: ${RFValue(15)}px;
-  display: flex;
-`;
-
-export const AntDesignWrapper = styled.View``;
