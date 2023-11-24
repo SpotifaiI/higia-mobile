@@ -1,7 +1,7 @@
-import { RFValue } from "react-native-responsive-fontsize";
-import styled from "styled-components/native";
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 
-import { colors } from "../../../global/styles/theme";
+import { colors } from '../../../../global/styles/theme';
 
 export const MenuBar = styled.View`
   color: ${colors.darker};
@@ -11,15 +11,14 @@ export const MenuPage = styled.View`
   display: flex;
   overflow: hidden;
   border-radius: ${RFValue(8)}px;
-  margin-top: ${RFValue(50)}px;
   background-color: ${colors.lighter};
-  elevation: 20;
 `;
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   width: 100%;
   height: 100%;
-  padding: 0 ${RFValue(16)}px;
+  padding: ${RFValue(48)}px ${RFValue(16)}px ${RFValue(32)}px ${RFValue(16)}px;
+  justify-content: space-between;
 `;
 
 export const ImgContainer = styled.View`
@@ -27,14 +26,13 @@ export const ImgContainer = styled.View`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-top: ${RFValue(30)}px;
+  margin-top: ${RFValue(32)}px;
 `;
 
-export const HigiaIcon = {
-  width: RFValue(70),
-  height: RFValue(57),
-  display: "flex",
-};
+export const HigiaIcon = styled.Image`
+  width: ${RFValue(72)}px;
+  height: ${RFValue(64)}px;
+`;
 
 export const Description = styled.Text`
   font-family: "Poppins_200ExtraLight";

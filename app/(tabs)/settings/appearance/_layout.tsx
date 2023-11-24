@@ -1,5 +1,5 @@
 import { SettingsAppearance } from ".";
 
-export default function Settings() {
+export default function AppearanceSettings() {
   return <SettingsAppearance />;
 }

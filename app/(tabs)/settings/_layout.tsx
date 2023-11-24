@@ -1,54 +1,28 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SettingsMainScreen } from "./index";
+import { Stack } from 'expo-router';
 
-import { SettingsAppearance } from "./SettingsAppearance/";
-import { SettingsMap } from "./SettingsMap";
-import { SettingsStatistics } from "./SettingsStatistics";
-
-import { GradientMain } from "../../../components/GradientMain";
-import { colors } from "../../../global/styles/theme";
-
-const Stack = createNativeStackNavigator();
+import { colors } from '../../../global/styles/theme';
 
 export default function SettingsLayout() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Settings"
-        screenOptions={{
-          headerBackground: () => <GradientMain />,
-          headerTitleStyle: {
-            color: colors.lighter,
-            fontFamily: "Poppins_700Bold"
-          },
-          headerTintColor: colors.lighter, // Define a cor da seta de retorno
-          headerTitleAlign: "center",
-          headerBackTitleVisible: false, // Oculta o título de retorno padrão
-        }}
-      >
-        <Stack.Screen
-          name="SettingsMainScreen"
-          component={SettingsMainScreen}
-          options={{ title: "Configurações" }}
-        />
-        <Stack.Screen
-          name="SettingsAppearance"
-          component={SettingsAppearance}
-          options={{ title: "Aparência" }}
-        />
-        <Stack.Screen
-          name="SettingsMap"
-          component={SettingsMap}
-          options={{ title: "Mapa" }}
-        />
-        <Stack.Screen
-          name="SettingsStatistics"
-          component={SettingsStatistics}
-          options={{ title: "Estatísticas" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack
+      initialRouteName="main"
+      screenOptions={{
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: colors.main2
+        },
+        headerTitleStyle: {
+          color: colors.lighter,
+        },
+        headerTintColor: colors.lighter,
+        headerTitleAlign: "center",
+        headerBackButtonMenuEnabled: true
+      }}
+    >
+      <Stack.Screen name="main" options={{ title: "Configurações", headerShown: false }} />
+      <Stack.Screen name="appearance" options={{ title: "Aparência" }} />
+      <Stack.Screen name="maps" options={{ title: "Mapas" }} />
+      <Stack.Screen name="statistics" options={{ title: "Estatísticas" }} />
+    </Stack>
   );
 }

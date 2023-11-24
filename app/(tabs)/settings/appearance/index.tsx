@@ -1,6 +1,6 @@
-import { View, Text } from "react-native";
+import { Text, View } from 'react-native';
 
-export const SettingsAppearance: React.FC = () => {
+export function SettingsAppearance() {
   return (
     <View>
       <Text>Configurações de Aparência</Text>

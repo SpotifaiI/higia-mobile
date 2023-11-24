@@ -1,22 +1,26 @@
-import { View, Text, Switch, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { colors } from "../../../../global/styles/theme";
-import {
-  TaksMap,
-  Container,
-  TasksText,
-} from "./styles";
-import { useNavigation } from "@react-navigation/native";
-import { AppearanceButton } from "../../../../components/AppearanceButton";
+import { Stack } from 'expo-router';
+import React, { useState } from 'react';
+import { Switch, View } from 'react-native';
 
-export const SettingsMap: React.FC = () => {
+import { AppearanceButton } from '../../../../components/AppearanceButton';
+import { colors } from '../../../../global/styles/theme';
+
+import {
+  Container,
+  TaksMap,
+  TasksText,
+} from './styles';
+
+export function SettingsMap() {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-  const navigation = useNavigation();
 
   return (
     <Container>
-        <AppearanceButton onHandler={()=>{}}></AppearanceButton>
+      <Stack.Screen options={{ title: "Mapas" }} />
+
+      <AppearanceButton onHandler={()=>{}}></AppearanceButton>
+
       <TaksMap>
         <TasksText>Mostrar tarefas concluídas</TasksText>
         <View style={{ flexDirection: "row", alignItems: "center" }}>

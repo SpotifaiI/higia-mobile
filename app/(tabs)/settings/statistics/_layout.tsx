@@ -1,5 +1,5 @@
 import { SettingsStatistics } from ".";
 
-export default function Settings() {
+export default function StatisticsSettings() {
   return <SettingsStatistics />;
 }

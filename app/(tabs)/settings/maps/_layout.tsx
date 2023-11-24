@@ -1,5 +1,5 @@
 import { SettingsMap } from ".";
 
-export default function Settings() {
+export default function MapsSettings() {
   return <SettingsMap />;
 }
