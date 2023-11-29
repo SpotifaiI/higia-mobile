@@ -9,22 +9,28 @@ export const MapContainer = styled.View`
   position: relative;
 `;
 
-export const MapErrorContainer = styled.View`
+export const MapMessageContainer = styled.View`
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   margin: ${RFValue(16)}px;
   border-radius: ${RFValue(16)}px;
-  background-color: ${colors.danger};
-  color: ${colors.white};
   flex-direction: row;
   align-items: center;
   gap: ${RFValue(16)}px;
   padding: ${RFValue(8)}px ${RFValue(16)}px;
 `;
 
-export const MapErrorMessage = styled.Text`
+export const MapErrorContainer = styled(MapMessageContainer)`
+  background-color: ${colors.danger};
+`;
+
+export const MapInfoContainer = styled(MapMessageContainer)`
+  background-color: ${colors.main2};
+`;
+
+export const MapMessageText = styled.Text`
   color: ${colors.white};
   flex: 1;
   font-size: ${RFValue(16)}px;

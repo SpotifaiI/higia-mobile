@@ -6,7 +6,8 @@ import { TaskMapMarker } from '../../../components/TaskMapMarker';
 import {
   MapContainer,
   MapErrorContainer,
-  MapErrorMessage
+  MapInfoContainer,
+  MapMessageText
 } from './styles';
 
 export function Tasks() {
@@ -15,6 +16,7 @@ export function Tasks() {
     longitude: 0
   });
   const [locationErrorMessage, setLocationErrorMessage] = useState('');
+  const [isLoadingInitialLocation, setLoadingInitialLocation] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -29,6 +31,8 @@ export function Tasks() {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude
       });
+
+      setLoadingInitialLocation(false);
     })();
   }, []);
 
@@ -39,7 +43,7 @@ export function Tasks() {
         longitude: initialLocation.longitude,
         latitudeDelta: 0,
         longitudeDelta: 0
-      }} style={{ flex: 1 }} zoomEnabled>
+      }} style={{ flex: 1 }} zoomEnabled minZoomLevel={10}>
         <TaskMapMarker
           key={0}
           title="Avenida JK"
@@ -68,12 +72,24 @@ export function Tasks() {
           status="finished" />
       </MapView>
 
+      {
+        (isLoadingInitialLocation && !locationErrorMessage)
+        ? (
+          <MapInfoContainer>
+            <MapMessageText>
+              Carregando localização inicial...
+            </MapMessageText>
+          </MapInfoContainer>
+        )
+        : null
+      }
+
       {(locationErrorMessage)
         ? (
           <MapErrorContainer>
-            <MapErrorMessage>
+            <MapMessageText>
               {locationErrorMessage}
-            </MapErrorMessage>
+            </MapMessageText>
           </MapErrorContainer>
         )
         : null}
