@@ -8,10 +8,8 @@ import axios from "axios";
 
 import { router } from "expo-router";
 import { GradientButton } from "../../components/GradientButton";
-import { IconButton } from "../../components/IconButton";
 import { InputLabel } from "../../components/InputLabel";
 import { InputText } from "../../components/InputText";
-import { buttonIcons } from "../../global/assets/icons";
 import {
   ButtonsContainer,
   Description,
@@ -42,10 +40,6 @@ export function Login() {
           console.error("Erro ao fazer login:", error);
         });
     }
-
-  function onHandlerGoogleButton() {}
-
-  function onHandlerFacebookButton() {}
 
   return (
     <SafeAreaView style={{ backgroundColor: "#F5F5F5" }}>
@@ -83,19 +77,6 @@ export function Login() {
             <SeparatorText>ou</SeparatorText>
             <SeparatorLine />
           </SeparatorContainer>
-
-          <ButtonsContainer>
-            <IconButton
-              label="Entrar com Google"
-              onHandler={onHandlerGoogleButton}
-              iconSource={buttonIcons.google}
-            />
-            <IconButton
-              label="Entrar com Facebook"
-              onHandler={onHandlerFacebookButton}
-              iconSource={buttonIcons.facebook}
-            />
-          </ButtonsContainer>
         </Wrapper>
       </ScrollView>
     </SafeAreaView>
