@@ -10,9 +10,10 @@ export type CollaboratorsContextData = {
   email: string;
   phone: string;
   updateCredentials: (collaborator: Collaborator) => void;
+  isLoggedIn: () => boolean;
 };
 
-const CollaboratorsContext = createContext<CollaboratorsContextData>(
+export const CollaboratorsContext = createContext<CollaboratorsContextData>(
   {} as CollaboratorsContextData
 );
 
@@ -33,6 +34,10 @@ export function CollaboratorsProvider({
     setPhone(collaborator.phoneNumber);
   }
 
+  function isLoggedIn() {
+    return id.length > 0;
+  }
+
   function buildCollaboratorDate(date: Date) {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -48,7 +53,8 @@ export function CollaboratorsProvider({
       email,
       id,
       phone,
-      updateCredentials
+      updateCredentials,
+      isLoggedIn
     }}>
       {children}
     </CollaboratorsContext.Provider>

@@ -1,15 +1,12 @@
-import {
-  Image,
-  ScrollView
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from 'expo-router';
+import { Image, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { router } from "expo-router";
-import { GradientButton } from "../../components/GradientButton";
-import { IconButton } from "../../components/IconButton";
-import { InputLabel } from "../../components/InputLabel";
-import { InputText } from "../../components/InputText";
-import { buttonIcons } from "../../global/assets/icons";
+import { GradientButton } from '../../components/GradientButton';
+import { IconButton } from '../../components/IconButton';
+import { InputLabel } from '../../components/InputLabel';
+import { InputText } from '../../components/InputText';
+import { buttonIcons } from '../../global/assets/icons';
 import {
   ButtonsContainer,
   Description,
@@ -19,7 +16,7 @@ import {
   SeparatorLine,
   SeparatorText,
   Wrapper
-} from "./styles";
+} from './styles';
 
 export function Login() {
   function onHandlerLoginButton() {
