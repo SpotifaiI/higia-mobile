@@ -9,19 +9,20 @@ export class Http {
 
   constructor(resource?: string) {
     this.port = 5103;
-    this.domain = 'http://localhost';
+    this.domain = 'http://192.168.0.1';
 
     this.baseUrl = `${this.domain}:${this.port}/api`;
 
     if (resource) {
       this.baseUrl = `${this.baseUrl}/${resource}`;
     }
+
+    console.log(this.baseUrl);
   }
 
   create(): HttpInstance {
     return axios.create({
-      baseURL: this.baseUrl,
-      withCredentials: false
+      baseURL: this.baseUrl
     });
   }
 }

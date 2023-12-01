@@ -36,11 +36,11 @@ import {
 
 export default function Home() {
   const router = useRouter();
-  const collaboratorsContext = useContext(CollaboratorsContext);
+  const { isLoggedIn, name } = useContext(CollaboratorsContext);
 
   useEffect(() => {
     setTimeout(() => {
-      if (!collaboratorsContext.isLoggedIn()) {
+      if (!isLoggedIn()) {
         router.replace('/welcome');
       }
     }, 200);
@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <ScrollView>
       <Container>
-        <Title>Bom dia, João!</Title>
+        <Title>Bom dia, {name}!</Title>
 
         <BarProgress>
           <Phrase>Meta Diária</Phrase>

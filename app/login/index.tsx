@@ -1,12 +1,13 @@
-import axios from 'axios';
-import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Image, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useContext, useState } from 'react';
+import { Alert, Image, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CollaboratorsAPI } from '../../api/collaborators/collaborators';
 import { GradientButton } from '../../components/GradientButton';
 import { InputLabel } from '../../components/InputLabel';
 import { InputText } from '../../components/InputText';
+import { CollaboratorsContext } from '../../contexts/CollaboratorsContext';
 import {
   ButtonsContainer,
   Description,
@@ -16,23 +17,32 @@ import {
 } from './styles';
 
 export function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { updateCredentials } = useContext(CollaboratorsContext);
+  const collaboratorsApi = new CollaboratorsAPI();
 
-  useEffect(() => {
-    (async () => {})();
-  }, []);
+  async function onHandlerLoginButton() {
+    const collaborator = await collaboratorsApi.collaboratorLogin(email);
 
-  function onHandlerLoginButton() {
-    axios
-      .post("/api/collaborators", { email, password })
-      .then((response) => {
-        console.log(response.data);
-        router.replace("/(tabs)/");
-      })
-      .catch((error) => {
-        console.error("Erro ao fazer login:", error);
+    if (collaborator) {
+      updateCredentials({
+        birthday: collaborator.birthday,
+        email: collaborator.email,
+        id: collaborator.id,
+        name: collaborator.name,
+        phoneNumber: collaborator.phoneNumber
       });
+      router.replace('/(tabs)');
+    } else {
+      Alert.alert(
+        'Login inválido!',
+        'Login ou senha estão incorretos, tente novamente.',
+        [{ text: 'Entendi' }]
+      );
+    }
   }
 
   return (
@@ -53,6 +63,7 @@ export function Login() {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
+                value={email}
               />
 
               <InputLabel>Senha</InputLabel>
@@ -60,6 +71,7 @@ export function Login() {
                 placeholder="Digite sua senha"
                 secureTextEntry={true}
                 onChangeText={(text) => setPassword(text)}
+                value={password}
               />
             </FormContainer>
 
