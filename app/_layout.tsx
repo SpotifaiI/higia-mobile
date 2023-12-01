@@ -11,6 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback } from 'react';
 import { View } from "react-native";
+import { CollaboratorsProvider } from '../contexts/CollaboratorsContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,11 +38,13 @@ export default function App() {
     <View style={{ flex: 1 }} onLayout={onLayoutRootBuilt}>
       <StatusBar style='dark'/>
 
-      <Stack initialRouteName="(tabs)">
-        <Stack.Screen name="welcome" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <CollaboratorsProvider>
+        <Stack initialRouteName="(tabs)">
+          <Stack.Screen name="welcome" options={{ headerShown: false }} />
+          <Stack.Screen name="login" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </CollaboratorsProvider>
     </View>
   );
 }

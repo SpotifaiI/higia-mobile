@@ -1,4 +1,4 @@
-import { Http, HttpInstance } from '@/helpers/http';
+import { Http, HttpInstance } from '../../helpers/http';
 
 export class CollaboratorsAPI {
   private http: HttpInstance;
