@@ -12,9 +12,6 @@ import {
   Description,
   FormContainer,
   Header,
-  SeparatorContainer,
-  SeparatorLine,
-  SeparatorText,
   Wrapper
 } from './styles';
 
@@ -68,12 +65,6 @@ export function Login() {
 
             <GradientButton label="Entrar" onHandler={onHandlerLoginButton} />
           </ButtonsContainer>
-
-          <SeparatorContainer>
-            <SeparatorLine />
-            <SeparatorText>ou</SeparatorText>
-            <SeparatorLine />
-          </SeparatorContainer>
         </Wrapper>
       </ScrollView>
     </SafeAreaView>
