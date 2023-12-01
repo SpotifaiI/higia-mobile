@@ -39,9 +39,11 @@ export default function Home() {
   const collaboratorsContext = useContext(CollaboratorsContext);
 
   useEffect(() => {
-    if (!collaboratorsContext.isLoggedIn()) {
-      router.replace('/welcome');
-    }
+    setTimeout(() => {
+      if (!collaboratorsContext.isLoggedIn()) {
+        router.replace('/welcome');
+      }
+    }, 200);
   }, []);
 
   return (
