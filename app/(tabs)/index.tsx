@@ -1,6 +1,10 @@
-import { ScrollView } from "react-native";
-import { GradientMain } from "../../components/GradientMain";
-import { StreetBox } from "../../components/ActiveTasks";
+import { useRouter } from 'expo-router';
+import { useContext, useEffect } from 'react';
+import { ScrollView } from 'react-native';
+
+import { StreetBox } from '../../components/ActiveTasks';
+import { GradientMain } from '../../components/GradientMain';
+import { CollaboratorsContext } from '../../contexts/CollaboratorsContext';
 import {
   Actual,
   Average,
@@ -28,9 +32,18 @@ import {
   Value,
   ValuePlace,
   WeekBox,
-} from "./styles";
+} from './styles';
 
 export default function Home() {
+  const router = useRouter();
+  const collaboratorsContext = useContext(CollaboratorsContext);
+
+  useEffect(() => {
+    if (!collaboratorsContext.isLoggedIn()) {
+      router.replace('/welcome');
+    }
+  }, []);
+
   return (
     <ScrollView>
       <Container>

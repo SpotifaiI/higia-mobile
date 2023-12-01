@@ -1,45 +1,39 @@
-import {
-  Image,
-  ScrollView
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from 'axios';
+import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { Image, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { router } from "expo-router";
-import { GradientButton } from "../../components/GradientButton";
-import { InputLabel } from "../../components/InputLabel";
-import { InputText } from "../../components/InputText";
+import { GradientButton } from '../../components/GradientButton';
+import { InputLabel } from '../../components/InputLabel';
+import { InputText } from '../../components/InputText';
 import {
   ButtonsContainer,
   Description,
   FormContainer,
   Header,
-  SeparatorContainer,
-  SeparatorLine,
-  SeparatorText,
   Wrapper
-} from "./styles";
+} from './styles';
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    useEffect(() => {
-      (async () => {})();
-    }, []);
+  useEffect(() => {
+    (async () => {})();
+  }, []);
 
-    function onHandlerLoginButton() {
-      axios
-        .post("/api/collaborators", { email, password })
-        .then((response) => {
-          console.log(response.data);
-          router.replace("/(tabs)/");
-        })
-        .catch((error) => {
-          console.error("Erro ao fazer login:", error);
-        });
-    }
+  function onHandlerLoginButton() {
+    axios
+      .post("/api/collaborators", { email, password })
+      .then((response) => {
+        console.log(response.data);
+        router.replace("/(tabs)/");
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer login:", error);
+      });
+  }
 
   return (
     <SafeAreaView style={{ backgroundColor: "#F5F5F5" }}>
@@ -71,12 +65,6 @@ export function Login() {
 
             <GradientButton label="Entrar" onHandler={onHandlerLoginButton} />
           </ButtonsContainer>
-
-          <SeparatorContainer>
-            <SeparatorLine />
-            <SeparatorText>ou</SeparatorText>
-            <SeparatorLine />
-          </SeparatorContainer>
         </Wrapper>
       </ScrollView>
     </SafeAreaView>
