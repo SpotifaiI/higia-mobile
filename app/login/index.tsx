@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useContext, useState } from 'react';
-import { Alert, Image, ScrollView } from 'react-native';
+import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CollaboratorsAPI } from '../../api/collaborators/collaborators';
@@ -25,7 +25,9 @@ export function Login() {
   const collaboratorsApi = new CollaboratorsAPI();
 
   async function onHandlerLoginButton() {
-    const collaborator = await collaboratorsApi.collaboratorLogin(email);
+    const collaborator = await collaboratorsApi.collaboratorLogin(
+      email, password
+    );
 
     if (collaborator) {
       updateCredentials({
@@ -46,39 +48,41 @@ export function Login() {
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#F5F5F5" }}>
-      <ScrollView>
-        <Wrapper>
-          <Header>
-            <Image source={require("../../assets/favicon.png")} />
+    <SafeAreaView style={{ backgroundColor: "#F5F5F5", flex: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView style={{ flex: 1 }}>
+          <Wrapper>
+            <Header>
+              <Image source={require("../../assets/favicon.png")} />
 
-            <Description>HIGIA</Description>
-          </Header>
+              <Description>HIGIA</Description>
+            </Header>
 
-          <ButtonsContainer>
-            <FormContainer>
-              <InputLabel>E-mail</InputLabel>
-              <InputText
-                placeholder="Digite seu email"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                onChangeText={(text) => setEmail(text)}
-                value={email}
-              />
+            <ButtonsContainer>
+              <FormContainer>
+                <InputLabel>E-mail</InputLabel>
+                <InputText
+                  placeholder="Digite seu email"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  onChangeText={(text) => setEmail(text)}
+                  value={email}
+                />
 
-              <InputLabel>Senha</InputLabel>
-              <InputText
-                placeholder="Digite sua senha"
-                secureTextEntry={true}
-                onChangeText={(text) => setPassword(text)}
-                value={password}
-              />
-            </FormContainer>
+                <InputLabel>Senha</InputLabel>
+                <InputText
+                  placeholder="Digite sua senha"
+                  secureTextEntry={true}
+                  onChangeText={(text) => setPassword(text)}
+                  value={password}
+                />
+              </FormContainer>
 
-            <GradientButton label="Entrar" onHandler={onHandlerLoginButton} />
-          </ButtonsContainer>
-        </Wrapper>
-      </ScrollView>
+              <GradientButton label="Entrar" onHandler={onHandlerLoginButton} />
+            </ButtonsContainer>
+          </Wrapper>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

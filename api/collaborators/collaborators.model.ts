@@ -6,6 +6,10 @@ export type DbCollaborator = {
   phoneNumber: string;
 }
 
+export type CollaboratorWithPass = {
+  password: string;
+} & Collaborator;
+
 export class Collaborator {
   public id: string;
   public name: string;
