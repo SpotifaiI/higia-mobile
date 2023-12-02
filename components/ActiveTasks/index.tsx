@@ -1,44 +1,80 @@
-import { PropsWithChildren } from "react";
-import { Text } from "react-native";
+import React, { PropsWithChildren, useState } from "react";
+import { FontAwesome } from "@expo/vector-icons";
+import { colors } from "../../global/styles/theme";
 import {
   StreetBoxWrapper,
   LeftContent,
-  PausedIcon,
-  PlayIcon,
   Time,
   RightContent,
   DistanceLabel,
-  StreetName
+  StreetName,
 } from "./styles";
-
-import { FontAwesome } from "@expo/vector-icons"; 
-import { colors } from "../../global/styles/theme";
-import { GradientMain } from "../GradientMain";
 
 export type StreetBoxProps = PropsWithChildren<{
   streetName: string;
   distance: string;
-  isPaused: boolean;
+  status: string;
   time?: string;
 }>;
 
 export function StreetBox({
   streetName,
   distance,
-  isPaused,
+  status,
   time,
 }: StreetBoxProps) {
+  const [showPlayButton, setShowPlayButton] = useState(true);
+  const [showPauseButton, setShowPauseButton] = useState(false);
+  const [showCompletedButton, setShowCompletedButton] = useState(false);
+
+  const handlePlayClick = () => {
+    setShowPlayButton(false);
+    setShowPauseButton(true);
+    setShowCompletedButton(false);
+  };
+
+  const handlePauseClick = () => {
+    setShowPlayButton(true);
+    setShowPauseButton(false);
+    setShowCompletedButton(true);
+  };
+
+  const handleCompletedClick = () => {
+    // Adicione a lógica para lidar com o clique no botão de concluído
+    setShowPlayButton(false);
+    setShowPauseButton(false);
+    setShowCompletedButton(false);
+  };
+
   return (
     <StreetBoxWrapper>
       <LeftContent>
-        {isPaused ? (
+        {showPlayButton && (
+          <FontAwesome
+            name="play-circle-o"
+            size={50}
+            color={colors.main1}
+            onPress={handlePlayClick}
+          />
+        )}
+        {showPauseButton && (
           <>
-            <PausedIcon>Paused</PausedIcon>
+            <FontAwesome
+              name="pause-circle-o"
+              size={50}
+              color={colors.main1}
+              onPress={handlePauseClick}
+            />
             <Time>{time}</Time>
           </>
-        ) : (
-          <FontAwesome  name="play-circle-o" size={50} color={
-            colors.main1} />
+        )}
+        {showCompletedButton && (
+          <FontAwesome
+            name="check-circle-o"
+            size={50}
+            color={colors.main1}
+            onPress={handleCompletedClick}
+          />
         )}
       </LeftContent>
       <RightContent>

@@ -21,6 +21,7 @@ export const LeftContent = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   padding: 0 ${RFValue(5)}px;
   margin-right: auto;
   flex: 4;
@@ -54,7 +55,7 @@ export const Time = styled.Text`
 
 export const StreetName = styled.Text`
   font-weight: bold;
-  font-size: ${RFValue(24)}px;
+  font-size: ${RFValue(18)}px;
   text-transform: capitalize;
 `;
 

@@ -20,14 +20,8 @@ export function SettingsMainScreen() {
           elevation: 20
         }}>
         <MenuBar>
-          <SettingsOptionButton label="Aparência" onPress={() => {
-            router.push('/settings/appearance');
-          }} />
           <SettingsOptionButton label="Mapa" onPress={() => {
             router.push('/settings/maps');
-          }} />
-          <SettingsOptionButton label="Estatística" onPress={() => {
-            router.push('/settings/statistics');
           }} />
         </MenuBar>
       </MenuPage>
