@@ -9,6 +9,7 @@ import {
   DistanceLabel,
   StreetName,
 } from "./styles";
+import { taskStatus } from "../../api/tasks/tasks.constants";
 
 export type StreetBoxProps = PropsWithChildren<{
   streetName: string;
@@ -26,21 +27,24 @@ export function StreetBox({
   const [showPlayButton, setShowPlayButton] = useState(true);
   const [showPauseButton, setShowPauseButton] = useState(false);
   const [showCompletedButton, setShowCompletedButton] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState(status);
 
   const handlePlayClick = () => {
+    setCurrentStatus(taskStatus.pending);
     setShowPlayButton(false);
     setShowPauseButton(true);
     setShowCompletedButton(false);
   };
 
   const handlePauseClick = () => {
+    setCurrentStatus(taskStatus.active);
     setShowPlayButton(true);
     setShowPauseButton(false);
     setShowCompletedButton(true);
   };
 
   const handleCompletedClick = () => {
-    // Adicione a lógica para lidar com o clique no botão de concluído
+    setCurrentStatus(taskStatus.concluded);
     setShowPlayButton(false);
     setShowPauseButton(false);
     setShowCompletedButton(false);
@@ -78,7 +82,9 @@ export function StreetBox({
         )}
       </LeftContent>
       <RightContent>
-        <StreetName>{streetName}</StreetName>
+        <StreetName>
+          {streetName}
+        </StreetName>
         <DistanceLabel>{distance}km</DistanceLabel>
       </RightContent>
     </StreetBoxWrapper>

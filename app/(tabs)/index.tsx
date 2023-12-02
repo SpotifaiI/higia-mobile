@@ -22,8 +22,8 @@ import { Task } from "../../api/tasks/tasks.model";
 export default function Home() {
   const router = useRouter();
   const { isLoggedIn, name } = useContext(CollaboratorsContext);
-  const [tasks, setTasks] = useState<Task[]>([]); // Inicialize o estado tasks
-
+  const [tasks, setTasks] = useState<Task[]>([]); 
+  
   useEffect(() => {
     setTimeout(() => {
       if (!isLoggedIn()) {
@@ -35,19 +35,16 @@ export default function Home() {
   const tasksAPI = new TasksAPI();
 
   useEffect(() => {
-    // Função assíncrona para obter as tarefas do servidor
     const fetchTasks = async () => {
       try {
         const tasksFromAPI = await tasksAPI.getTasks();
-        setTasks(tasksFromAPI); // Atualize o estado com as tarefas obtidas
+        setTasks(tasksFromAPI);
       } catch (error) {
         console.error("Erro ao obter tarefas:", error);
       }
     };
 
-    fetchTasks(); // Chame a função para buscar as tarefas ao carregar o componente
-
-    // ...
+    fetchTasks();
   }, [tasksAPI]);
 
   function calculateDistance(coord1: string, coord2: string): string {
@@ -69,6 +66,15 @@ export default function Home() {
     return distance.toFixed(2);
   }
 
+  const getStatusCount = (status: string) => {
+    return tasks.filter((task) => task.status === status).length;
+  };
+
+  const ativoCount = getStatusCount("A");
+  const concluidoCount = getStatusCount("C");
+  const pendentesCount = getStatusCount("P");
+
+
   return (
     <ScrollView>
       <Container>
@@ -78,16 +84,16 @@ export default function Home() {
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
-              <Value>25.0</Value>
-              <Label>Média</Label>
+              <Value>{pendentesCount}</Value>
+              <Label>Pendentes</Label>
             </Average>
             <Actual>
-              <Value>45</Value>
-              <Label>Atual</Label>
+              <Value>{concluidoCount}</Value>
+              <Label>Concluídos</Label>
             </Actual>
             <Goal>
-              <Value>50</Value>
-              <Label>Objetivo</Label>
+              <Value>{ativoCount}</Value>
+              <Label>Ativos</Label>
             </Goal>
           </TextWrapper>
         </ProgressContainer>
