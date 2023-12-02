@@ -35,7 +35,8 @@ export function Login() {
         email: collaborator.email,
         id: collaborator.id,
         name: collaborator.name,
-        phoneNumber: collaborator.phoneNumber
+        phoneNumber: collaborator.phoneNumber,
+        password: collaborator.password
       });
       router.replace('/(tabs)');
     } else {

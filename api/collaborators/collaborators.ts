@@ -17,13 +17,15 @@ export class CollaboratorsAPI {
       name,
       email,
       birthday,
-      phoneNumber
+      phoneNumber,
+      password
     }) => new Collaborator({
       id,
       birthday,
       email,
       name,
-      phoneNumber
+      phoneNumber,
+      password
     }));
 
     return collaborators;
