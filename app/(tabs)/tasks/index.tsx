@@ -2,7 +2,9 @@ import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
 import MapView, { LatLng } from 'react-native-maps';
 
-import { TaskMapMarker } from '../../../components/TaskMapMarker';
+import { TasksAPI } from '../../../api/tasks/tasks';
+import { Task } from '../../../api/tasks/tasks.model';
+import { TaskMapMarker, TaskStatus } from '../../../components/TaskMapMarker';
 import {
   MapContainer,
   MapErrorContainer,
@@ -17,6 +19,12 @@ export function Tasks() {
   });
   const [locationErrorMessage, setLocationErrorMessage] = useState('');
   const [isLoadingInitialLocation, setLoadingInitialLocation] = useState(true);
+  const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
+  const [activeTasks, setActiveTasks] = useState<Task[]>([]);
+  const [concludedTasks, setConcludedTasks] = useState<Task[]>([]);
+
+  const tasksApi = new TasksAPI();
+  let tasksCounter = 0;
 
   useEffect(() => {
     (async () => {
@@ -36,6 +44,32 @@ export function Tasks() {
     })();
   }, []);
 
+  useEffect(() => {
+    (
+      async () => {
+        const { active, concluded, pending } = await tasksApi.getOrderedTasks();
+
+        setPendingTasks(pending);
+        setActiveTasks(active);
+        setConcludedTasks(concluded);
+      }
+    )();
+  }, []);
+
+  function TaskMapMarkerItem(key: number, status: TaskStatus, task: Task) {
+    return (
+      <TaskMapMarker
+        key={key}
+        title={task.description}
+        description={task.observation}
+        coordinate={{
+          latitude: task.initialCoordinate.lat,
+          longitude: task.initialCoordinate.lng
+        }}
+        status={status} />
+    );
+  }
+
   return (
     <MapContainer>
       <MapView region={{
@@ -44,32 +78,23 @@ export function Tasks() {
         latitudeDelta: 0,
         longitudeDelta: 0
       }} style={{ flex: 1 }} zoomEnabled minZoomLevel={10}>
-        <TaskMapMarker
-          key={0}
-          title="Avenida JK"
-          description="Cruzamento da JK com a Rua 9 de Março"
-          coordinate={initialLocation}
-          status="pending" />
+        {
+          pendingTasks.map(task => {
+            return TaskMapMarkerItem(tasksCounter++, 'pending', task);
+          })
+        }
 
-        <TaskMapMarker
-          key={1}
-          title="Avenida JK"
-          description="Cruzamento da JK com a Rua 9 de Março"
-          coordinate={{
-            latitude: initialLocation.latitude + 0.0004343,
-            longitude: initialLocation.longitude + 0.0054543
-          }}
-          status="progress" />
+        {
+          activeTasks.map(task => {
+            return TaskMapMarkerItem(tasksCounter++, 'progress', task);
+          })
+        }
 
-        <TaskMapMarker
-          key={2}
-          title="Avenida JK"
-          description="Cruzamento da JK com a Rua 9 de Março"
-          coordinate={{
-            latitude: initialLocation.latitude - 0.0004343,
-            longitude: initialLocation.longitude - 0.0054543
-          }}
-          status="finished" />
+        {
+          concludedTasks.map(task => {
+            return TaskMapMarkerItem(tasksCounter++, 'finished', task);
+          })
+        }
       </MapView>
 
       {

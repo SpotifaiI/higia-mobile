@@ -8,8 +8,10 @@ import {
   TaskMapMarkerPointer
 } from './styles';
 
+export type TaskStatus = 'pending'|'progress'|'finished';
+
 export type TaskMapMarkerProps = {
-  status: 'pending'|'progress'|'finished'
+  status: TaskStatus;
 } & MapMarkerProps;
 
 export function TaskMapMarker({

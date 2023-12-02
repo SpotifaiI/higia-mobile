@@ -1,6 +1,7 @@
 import { Http, HttpInstance } from '../../helpers/http';
 import { taskStatus } from './tasks.constants';
-import { DbTask, OrderedTasks, Task } from './tasks.model';
+import { OrderedTasks, Task } from './tasks.model';
+import { data } from './tasks.store';
 
 export class TasksAPI {
   private http: HttpInstance;
@@ -10,7 +11,7 @@ export class TasksAPI {
   }
 
   async getTasks(): Promise<Task[]> {
-    const { data } = await this.http.get<DbTask[]>('/');
+    // const { data } = await this.http.get<DbTask[]>('/');
 
     return data.map(task => new Task(task));
   }
