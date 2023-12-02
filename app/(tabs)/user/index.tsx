@@ -1,7 +1,9 @@
 import { Feather } from '@expo/vector-icons';
+import { useContext } from 'react';
 
 import { GradientMain } from '../../../components/GradientMain';
 import { ProfileDetails } from '../../../components/ProfileDetails';
+import { CollaboratorsContext } from '../../../contexts/CollaboratorsContext';
 import { Wrapper } from '../../../global/styles/components';
 import { colors } from '../../../global/styles/theme';
 import {
@@ -13,6 +15,13 @@ import {
 } from './styles';
 
 export function User() {
+  const {
+    name,
+    email,
+    birthDate,
+    phone
+  } = useContext(CollaboratorsContext);
+
   return (
     <ProfileContainer>
       <Wrapper>
@@ -24,23 +33,20 @@ export function User() {
           </ProfileAvatar>
 
           <ProfileName>
-            João de Silva
+            {name}
           </ProfileName>
         </ProfileHeader>
 
         <ProfileBody>
           <ProfileDetails
             label="E-mail"
-            text="contato@joao.com.br" />
+            text={email} />
           <ProfileDetails
             label="Telefone"
-            text="(47) 9 9999-9999" />
+            text={phone} />
           <ProfileDetails
             label="Data de Nascimento"
-            text="23/10/1963" />
-          <ProfileDetails
-            label="CPF"
-            text="000.000.000-00" />
+            text={birthDate} />
         </ProfileBody>
       </Wrapper>
     </ProfileContainer>
