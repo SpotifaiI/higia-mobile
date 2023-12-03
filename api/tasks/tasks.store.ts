@@ -31,5 +31,27 @@ export const data = [
     expectedEndTime: '2023-12-01T00:00:00',
     endTime: '2023-12-01T00:00:00',
     startTime: '2023-12-01T00:00:00'
-  }
+  },
+  {
+    id: '07813c3f-f5j8-436a-be2e-bce50315390d',
+    initialCoordinate: '-26.329, -48.834',
+    endCoordinate: '-26.329, -48.834',
+    description: 'Outra tarefa para notar',
+    observation: 'Mais uma tarefa show',
+    initialTime: '2023-12-01T00:00:00',
+    expectedEndTime: '2023-12-01T00:00:00',
+    endTime: null,
+    startTime: null
+  },
+  {
+    id: '07813c3f-e2b8-436a-be2e-bce57630390d',
+    initialCoordinate: '-26.349, -48.769',
+    endCoordinate: '-26.349, -48.769',
+    description: 'Outra tarefa destacável',
+    observation: 'Mais uma tarefa incrível',
+    initialTime: '2023-12-01T00:00:00',
+    expectedEndTime: '2023-12-01T00:00:00',
+    endTime: null,
+    startTime: null
+  },
 ];
