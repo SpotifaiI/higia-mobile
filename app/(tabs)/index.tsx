@@ -1,11 +1,9 @@
 import { useRouter } from "expo-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ScrollView } from "react-native";
-import { TasksAPI } from "../../api/tasks/tasks";
-import { taskStatus } from "../../api/tasks/tasks.constants";
-import { Task } from "../../api/tasks/tasks.model";
 import { StreetBox } from "../../components/ActiveTasks";
 import { CollaboratorsContext } from "../../contexts/CollaboratorsContext";
+import { TasksContext } from "../../contexts/TasksContext";
 import {
   Actual,
   Average,
@@ -23,11 +21,12 @@ import {
 export default function Home() {
   const router = useRouter();
   const { isLoggedIn, name } = useContext(CollaboratorsContext);
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  const [pendingTasksCount, setPendingTasksCount] = useState(0);
-  const [activeTasksCount, setActiveTasksCount] = useState(0);
-  const [concludedTasksCount, setConcludedTasksCount] = useState(0);
+  const {
+    pendingTasksCount,
+    activeTasksCount,
+    concludedTasksCount,
+    tasks
+  } = useContext(TasksContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,20 +35,6 @@ export default function Home() {
       }
     }, 200);
   }, [isLoggedIn, router]);
-
-  useEffect(() => {
-    getTasksList();
-  }, []);
-
-  async function getTasksList() {
-    const tasksAPI = new TasksAPI();
-    const tasksFromAPI = await tasksAPI.getTasks();
-
-    setTasks(tasksFromAPI);
-    setPendingTasksCount(getStatusCount(taskStatus.pending, tasksFromAPI));
-    setActiveTasksCount(getStatusCount(taskStatus.active, tasksFromAPI));
-    setConcludedTasksCount(getStatusCount(taskStatus.concluded, tasksFromAPI));
-  }
 
   function calculateDistance(coord1: string, coord2: string): string {
     const [lat1, lon1] = coord1.split(", ").map(parseFloat);
@@ -69,10 +54,6 @@ export default function Home() {
 
     return distance.toFixed(2);
   }
-
-  function getStatusCount(status: string, tasksList: Task[]): number {
-    return tasksList.filter((task) => task.status === status).length;
-  };
 
   return (
     <ScrollView>
@@ -103,6 +84,7 @@ export default function Home() {
           {tasks.map((task) => (
             <StreetBox
               key={task.id}
+              taskId={task.id}
               streetName={task.description}
               distance={calculateDistance(
                 `${task.initialCoordinate.lat}, ${task.initialCoordinate.lng}`,

@@ -40,17 +40,14 @@ export const RightContent = styled.View`
 export const PausedIcon = styled.Text`
   font-weight: bold;
   opacity: 0.5;
-  border: 1px solid purple;
 `;
 
 export const PlayIcon = styled.Text`
   font-weight: bold;
-  border: 1px solid yellow;
 `;
 
 export const Time = styled.Text`
   opacity: 0.5;
-  color: 1px solid pink;
 `;
 
 export const StreetName = styled.Text`
