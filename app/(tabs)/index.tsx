@@ -1,9 +1,9 @@
 import { useRouter } from "expo-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ScrollView } from "react-native";
-import { TasksAPI } from "../../api/tasks/tasks";
 import { StreetBox } from "../../components/ActiveTasks";
 import { CollaboratorsContext } from "../../contexts/CollaboratorsContext";
+import { TasksContext } from "../../contexts/TasksContext";
 import {
   Actual,
   Average,
@@ -17,13 +17,17 @@ import {
   Title,
   Value,
 } from "./styles";
-import { Task } from "../../api/tasks/tasks.model";
 
 export default function Home() {
   const router = useRouter();
   const { isLoggedIn, name } = useContext(CollaboratorsContext);
-  const [tasks, setTasks] = useState<Task[]>([]); 
-  
+  const {
+    pendingTasksCount,
+    activeTasksCount,
+    concludedTasksCount,
+    tasks
+  } = useContext(TasksContext);
+
   useEffect(() => {
     setTimeout(() => {
       if (!isLoggedIn()) {
@@ -31,21 +35,6 @@ export default function Home() {
       }
     }, 200);
   }, [isLoggedIn, router]);
-
-  const tasksAPI = new TasksAPI();
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const tasksFromAPI = await tasksAPI.getTasks();
-        setTasks(tasksFromAPI);
-      } catch (error) {
-        console.error("Erro ao obter tarefas:", error);
-      }
-    };
-
-    fetchTasks();
-  }, [tasksAPI]);
 
   function calculateDistance(coord1: string, coord2: string): string {
     const [lat1, lon1] = coord1.split(", ").map(parseFloat);
@@ -66,15 +55,6 @@ export default function Home() {
     return distance.toFixed(2);
   }
 
-  const getStatusCount = (status: string) => {
-    return tasks.filter((task) => task.status === status).length;
-  };
-
-  const ativoCount = getStatusCount("A");
-  const concluidoCount = getStatusCount("C");
-  const pendentesCount = getStatusCount("P");
-
-
   return (
     <ScrollView>
       <Container>
@@ -84,16 +64,16 @@ export default function Home() {
           <Phrase>Progresso</Phrase>
           <TextWrapper>
             <Average>
-              <Value>{pendentesCount}</Value>
+              <Value>{pendingTasksCount}</Value>
               <Label>Pendentes</Label>
             </Average>
             <Actual>
-              <Value>{concluidoCount}</Value>
-              <Label>Concluídos</Label>
+              <Value>{activeTasksCount}</Value>
+              <Label>Ativas</Label>
             </Actual>
             <Goal>
-              <Value>{ativoCount}</Value>
-              <Label>Ativos</Label>
+              <Value>{concludedTasksCount}</Value>
+              <Label>Concluídas</Label>
             </Goal>
           </TextWrapper>
         </ProgressContainer>
@@ -104,6 +84,7 @@ export default function Home() {
           {tasks.map((task) => (
             <StreetBox
               key={task.id}
+              taskId={task.id}
               streetName={task.description}
               distance={calculateDistance(
                 `${task.initialCoordinate.lat}, ${task.initialCoordinate.lng}`,

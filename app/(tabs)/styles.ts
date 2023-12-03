@@ -51,6 +51,7 @@ export const Phrase = styled.Text`
 
 export const TextWrapper = styled.View`
   width: 90%;
+  margin-top: ${RFValue(16)}px;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -90,7 +91,7 @@ export const DaysLasts = styled.Text`
 export const Value = styled.Text`
   font-size: ${RFValue(40)}px;
   font-family: "Poppins_700Bold";
-  
+
 `;
 
 export const Label = styled.Text`

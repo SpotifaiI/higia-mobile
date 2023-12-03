@@ -1,10 +1,10 @@
 import * as Location from 'expo-location';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MapView, { LatLng } from 'react-native-maps';
 
-import { TasksAPI } from '../../../api/tasks/tasks';
 import { Task } from '../../../api/tasks/tasks.model';
 import { TaskMapMarker, TaskStatus } from '../../../components/TaskMapMarker';
+import { TasksContext } from '../../../contexts/TasksContext';
 import {
   MapContainer,
   MapErrorContainer,
@@ -13,17 +13,14 @@ import {
 } from './styles';
 
 export function Tasks() {
+  const { orderedTasks: { active, pending, concluded } } = useContext(TasksContext);
   const [initialLocation, setInitialLocation] = useState<LatLng>({
     latitude: 0,
     longitude: 0
   });
   const [locationErrorMessage, setLocationErrorMessage] = useState('');
   const [isLoadingInitialLocation, setLoadingInitialLocation] = useState(true);
-  const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
-  const [activeTasks, setActiveTasks] = useState<Task[]>([]);
-  const [concludedTasks, setConcludedTasks] = useState<Task[]>([]);
 
-  const tasksApi = new TasksAPI();
   let tasksCounter = 0;
 
   useEffect(() => {
@@ -42,18 +39,6 @@ export function Tasks() {
 
       setLoadingInitialLocation(false);
     })();
-  }, []);
-
-  useEffect(() => {
-    (
-      async () => {
-        const { active, concluded, pending } = await tasksApi.getOrderedTasks();
-
-        setPendingTasks(pending);
-        setActiveTasks(active);
-        setConcludedTasks(concluded);
-      }
-    )();
   }, []);
 
   function TaskMapMarkerItem(key: number, status: TaskStatus, task: Task) {
@@ -79,19 +64,19 @@ export function Tasks() {
         longitudeDelta: 0
       }} style={{ flex: 1 }} zoomEnabled minZoomLevel={10}>
         {
-          pendingTasks.map(task => {
+          pending.map(task => {
             return TaskMapMarkerItem(tasksCounter++, 'pending', task);
           })
         }
 
         {
-          activeTasks.map(task => {
+          active.map(task => {
             return TaskMapMarkerItem(tasksCounter++, 'progress', task);
           })
         }
 
         {
-          concludedTasks.map(task => {
+          concluded.map(task => {
             return TaskMapMarkerItem(tasksCounter++, 'finished', task);
           })
         }

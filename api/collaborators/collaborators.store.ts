@@ -22,5 +22,13 @@ export const data = [
     birthday: "2001-01-01T00:00:00",
     phoneNumber: "1199999999",
     password: 'show_demais'
-  }
+  },
+  {
+    id: "38e17159-8641-4c08-5cva-8b73fe27b03c",
+    name: "colaborador Outro",
+    email: "um@outro.com",
+    birthday: "2001-01-01T00:00:00",
+    phoneNumber: "1199999999",
+    password: '123'
+  },
 ];

@@ -1,20 +1,23 @@
-import React, { PropsWithChildren, useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
-import { colors } from "../../global/styles/theme";
+import { Feather } from '@expo/vector-icons';
+import React, { PropsWithChildren, useContext, useEffect, useState } from 'react';
+
+import { taskStatus } from '../../api/tasks/tasks.constants';
+import { TaskActions, TasksContext } from '../../contexts/TasksContext';
+import { colors } from '../../global/styles/theme';
 import {
-  StreetBoxWrapper,
-  LeftContent,
-  Time,
-  RightContent,
   DistanceLabel,
+  LeftContent,
+  RightContent,
+  StreetBoxWrapper,
   StreetName,
-} from "./styles";
-import { taskStatus } from "../../api/tasks/tasks.constants";
+  Time,
+} from './styles';
 
 export type StreetBoxProps = PropsWithChildren<{
   streetName: string;
   distance: string;
   status: string;
+  taskId: string;
   time?: string;
 }>;
 
@@ -23,61 +26,82 @@ export function StreetBox({
   distance,
   status,
   time,
+  taskId
 }: StreetBoxProps) {
   const [showPlayButton, setShowPlayButton] = useState(true);
   const [showPauseButton, setShowPauseButton] = useState(false);
   const [showCompletedButton, setShowCompletedButton] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(status);
+  const { changeStatus } = useContext(TasksContext);
 
-  const handlePlayClick = () => {
-    setCurrentStatus(taskStatus.pending);
-    setShowPlayButton(false);
-    setShowPauseButton(true);
-    setShowCompletedButton(false);
-  };
+  useEffect(() => {
+    switch (currentStatus) {
+      case taskStatus.pending:
+        setShowPlayButton(true);
+        setShowPauseButton(false);
+        setShowCompletedButton(false);
+        break;
 
-  const handlePauseClick = () => {
-    setCurrentStatus(taskStatus.active);
-    setShowPlayButton(true);
-    setShowPauseButton(false);
-    setShowCompletedButton(true);
-  };
+      case taskStatus.active:
+        setShowPlayButton(false);
+        setShowPauseButton(true);
+        setShowCompletedButton(true);
+        break;
 
-  const handleCompletedClick = () => {
-    setCurrentStatus(taskStatus.concluded);
-    setShowPlayButton(false);
-    setShowPauseButton(false);
-    setShowCompletedButton(false);
-  };
+      case taskStatus.concluded:
+        setShowPlayButton(false);
+        setShowPauseButton(false);
+        setShowCompletedButton(true);
+        break;
+    }
+  }, [currentStatus]);
+
+  function onChangeTaskHandler(action: TaskActions) {
+    changeStatus(action, taskId);
+
+    switch (action) {
+      case 'play':
+        setCurrentStatus(taskStatus.active);
+        break;
+
+      case 'pause':
+        setCurrentStatus(taskStatus.pending);
+        break;
+
+      case 'finish':
+        setCurrentStatus(taskStatus.concluded);
+        break;
+    }
+  }
 
   return (
     <StreetBoxWrapper>
       <LeftContent>
         {showPlayButton && (
-          <FontAwesome
-            name="play-circle-o"
+          <Feather
+            name="play-circle"
             size={50}
             color={colors.main1}
-            onPress={handlePlayClick}
+            onPress={() => onChangeTaskHandler('play')}
           />
         )}
         {showPauseButton && (
           <>
-            <FontAwesome
-              name="pause-circle-o"
+            <Feather
+              name="pause-circle"
               size={50}
               color={colors.main1}
-              onPress={handlePauseClick}
+              onPress={() => onChangeTaskHandler('pause')}
             />
             <Time>{time}</Time>
           </>
         )}
         {showCompletedButton && (
-          <FontAwesome
-            name="check-circle-o"
+          <Feather
+            name="check-circle"
             size={50}
             color={colors.main1}
-            onPress={handleCompletedClick}
+            onPress={() => onChangeTaskHandler('finish')}
           />
         )}
       </LeftContent>

@@ -16,14 +16,12 @@ export class TasksAPI {
     return data.map(task => new Task(task));
   }
 
-  async getOrderedTasks(): Promise<OrderedTasks> {
-    const tasksList = await this.getTasks();
-
+  orderTasks(tasks: Task[]): OrderedTasks {
     const pending: Task[] = [];
     const active: Task[] = [];
     const concluded: Task[] = [];
 
-    tasksList.forEach(task => {
+    tasks.forEach(task => {
       switch (task.status) {
         case taskStatus.active:
           active.push(task);
@@ -44,5 +42,11 @@ export class TasksAPI {
       active,
       concluded
     };
+  }
+
+  async getOrderedTasks(): Promise<OrderedTasks> {
+    const tasksList = await this.getTasks();
+
+    return this.orderTasks(tasksList);
   }
 }
